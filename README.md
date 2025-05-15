@@ -86,3 +86,33 @@ BalajiOps/
 
    ```bash
    git clone https://github.com/yourusername/BalajiOps-ProductionManagementSystem.git
+2. Open in Visual Studio
+
+   Use Visual Studio 2022 or later.
+
+   Open the .sln solution file.
+3. Configure Database Connection
+
+   Update the connection string in web.config to point to your local SQL Server instance.
+
+   Restore the provided database .bak or .sql file into your SQL Server.
+4. Build & Run the Project
+
+   Press F5 or click Start Debugging to run the application on localhost.
+
+📬 Contact & Support
+
+📧 Email: chaudharishubham1807@gmail.com
+
+💼 LinkedIn: https://www.linkedin.com/in/shubham-chaudhari-249877253/
+
+💻 GitHub: https://github.com/Shubhamchaudhari1807
+
+🤝 Author:
+
+Shubham Chaudhari
+🧑‍💻 B.Tech Computer Engineering, Final Year
+RCPIT, Shirpur
+
+
+
