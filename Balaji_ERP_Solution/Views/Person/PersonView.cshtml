@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "PersonView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("SaveOrUpdate", "Person", FormMethod.Post))
+{
+    @Html.Partial("~/Views/Person/PersonPartial.cshtml")
+    @*<button type="submit" class="btn btn bg-danger">Save Record</button>*@
+}
+@Html.Action("PersonReport")

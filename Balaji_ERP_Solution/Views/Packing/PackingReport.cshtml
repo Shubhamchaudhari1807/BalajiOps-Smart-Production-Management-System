@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.SpPacking_Result>
+@{ 
+    Layout = null;
+}
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.PackingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackingFirstConversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackingSecondConversion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.PackingName)
+            @Html.HiddenFor(modelItem => item.PackingId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackingFirstConversion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackingSecondConversion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PackingId}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PackingId})
+        </td>
+    </tr>
+}
+
+</table>

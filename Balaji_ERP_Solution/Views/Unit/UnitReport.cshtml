@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.SpUnit_Result>
+@{ 
+    Layout = null;
+}
+<table class="table">
+    <tr>
+        <th>
+            Unit Name
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model=>item.UnitName)
+                @Html.HiddenFor(model=>item.UnitId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {@id=item.UnitId})
+                @Html.ActionLink("Delete", "Delete", new {@id=item.UnitId})
+            </td>
+        </tr>
+    }
+</table>

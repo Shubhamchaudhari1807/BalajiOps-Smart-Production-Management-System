@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.SpGodown_Result>
+@{
+    Layout = null;
+}
+<table class="table">
+    <tr>
+        <th>
+            GodownName
+        </th>
+        <th>
+            GodownAddress
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.GodownName)
+                @Html.HiddenFor(model => item.GodownId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.GodownAddress)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Edit", "GetDataById", new { id = item.GodownId })|
+                @Html.ActionLink("Delete", "Delete", new { id = item.GodownId })
+            </td>
+        </tr>
+    }
+</table>

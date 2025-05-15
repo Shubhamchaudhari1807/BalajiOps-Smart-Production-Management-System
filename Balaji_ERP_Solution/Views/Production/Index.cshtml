@@ -1,0 +1,13 @@
+﻿    @model Balaji_ERP_Solution.Models.ProductionHeaderLine
+
+@using (Html.BeginForm("SaveOrUpdate", "Production", FormMethod.Post))
+{
+    @Html.Partial("~/Views/Production/ProductionHeaderPartial.cshtml", Model.productionHeader)
+    <br />
+    <button type="submit">Save Record</button>
+    <br />
+    @Html.Partial("~/Views/Production/ProductionLinePartial.cshtml", Model.productionLine)
+}
+<br />
+
+

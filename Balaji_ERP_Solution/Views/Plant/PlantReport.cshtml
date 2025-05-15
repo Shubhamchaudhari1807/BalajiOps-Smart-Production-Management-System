@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.Models.PlantViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Capacity</th>
+                <th>Plant Name</th>
+                <th>Plant Address</th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CompanyName</td>
+                        @Html.HiddenFor(model => item.PlantId)
+                    <td>@item.Capacity</td>
+                    <td>@item.PlantName</td>
+                    <td>@item.PlantAddress</td>
+                    <td>
+                        @Html.ActionLink("Edit", "GetDataById", new { id = item.PlantId })|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PlantId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.GRNLine>
+@{
+    int i;
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function GrnLineCalculation(str) {
+        console.log("Hi")
+        var tr = $(str).closest("tr")
+        let AcceptedQty = parseFloat(tr.find(".classAcceptedQty").val())
+        let POQty = parseFloat(tr.find(".classPOQty").val())
+        let PORate = parseFloat(tr.find(".classPORate").val())
+        let DiscountPercent = parseFloat(tr.find(".classDiscountPercent").val())
+
+        if (AcceptedQty > POQty) {
+            alert("Accepted quantity cannot exceed PO quantity");
+            return;
+        }
+
+        if (POQty !== "" && PORate !== "" && AcceptedQty !== "") {
+            tr.find(".classBasicAmount").val(AcceptedQty * PORate)
+            let BasicAmount = tr.find(".classBasicAmount").val()
+            tr.find(".classDiscountAmount").val(BasicAmount * DiscountPercent / 100)
+            let DiscountAmount = tr.find(".classDiscountAmount").val()
+            tr.find(".classTaxableAmount").val(BasicAmount - DiscountAmount)
+            let TaxableAmount = tr.find(".classTaxableAmount").val()
+            let TaxPercent = tr.find(".classTaxPercent").val()
+            console.log(TaxPercent)
+            tr.find(".classTaxAmount").val((TaxPercent / 100 * TaxableAmount).toFixed(2))
+            let TaxAmount = tr.find(".classTaxAmount").val()
+            tr.find(".classPayableAmount").val((parseFloat(TaxAmount) + parseFloat(TaxableAmount)).toFixed(2))
+        }
+    }
+
+    function GetGRNLine() {
+        let POId = $("#idPOId").val();
+        $.ajax({
+            type: "POST",
+            url: "/GRN/GetGRNLineData",
+            data: { POId: POId },
+            success: function (data) {
+                console.log(data);
+
+                $("#GRNline").empty();
+
+                $(data).each(function (index, object) {
+                    var row = '<tr>' +
+                        '<td>' + '<input type="text" value="' + object.ProductName + '" id="idProductName" class="classProductName"/><input type="Hidden" name="item.ProductId" value="' + object.ProductId + '" >' + '</td>' +
+                        '<td>' + '<input type="text" value="' + object.ItemName + '" id="idItemName" class="classItemName"/><input type="Hidden" name="item.ItemId" value="' + object.ItemId + '" >' + '</td>' +
+                        '<td>' + '<input type="text" value="' + object.UnitName + '" id="idProductName" class="classUnittName"/><input type="Hidden" name="item.UnitId" value="' + object.UnitId + '" >' + '</td>' +
+                        '<td>' + '<input type="text" name="item.POQty" value="' + object.Quantity + '" id="idPOQty" class="classPOQty"/>' + '</td>' +
+                        '<td>' + '<input type="text" name="item.AcceptedQty" value="0" id="idAccepetdQty" class="classAcceptedQty" onchange="GrnLineCalculation(this)" />' + '</td>' +
+                        '<td>' + '<input type="text" name="item.RejectedQty" value="0" id="idRejectedQty" class="classRejectedQty" onchange="GrnLineCalculation(this)" />' + '</td>' +
+                        '<td>' + '<input type="text" name="item.FreeQty" value="0" id="idFreeQty" class="classFreeQty" onchange="GrnLineCalculation(this)" />' + '</td>' +
+                        '<td>' + '<input type="text" name="item.PORate" value="' + object.Rate + '" id="idRate" class="classPORate"/>' + '</td>' +
+                        '<td>' + '<input type="text" name="item.BasicAmount" value="' + object.BasicAmount + '" id="idBasicAmount" class="classBasicAmount"/>' + '</td>' +
+                        '<td>' + '<input type="text" name="item.DiscountPercentage" value="' + object.DiscountPercentage + '" id="idDiscountPercentage" class="classDiscountPercent"/>' + '</td>' +
+                        '<td>' + '<input type="text" name="item.DiscountAmount" value="' + object.DiscountAmount + '" id="idDiscountAmount" class="classDiscountAmount"/>' + '</td>' +
+                        '<td>' + '<input type="text" name="item.TaxableAmount" value="' + object.TaxableAmount + '" id="idTaxableAmount" class="classTaxableAmount"/>' + '</td>' +
+                        '<td>' + '<input type="text" value="' + object.TaxName + '" id="idTaxName" class="classTaxName"/>' +
+                        '<input type="hidden" name="item.TaxId" value="' + object.TaxId + '" id="idTaxPercent" class="classTaxPercent"/>'
+                        + '</td>' +
+                        '<td>' + '<input type="text" name="item.TaxAmount" value="' + object.TaxAmount + '" id="idTaxAmount" class="classTaxAmount"/>' + '</td>' +
+                        '<td>' + '<input type="text" name="item.PayableAmount" value="' + object.PayableAmount + '" id="idPayableAmount" class="classPayableAmount"/>' +
+                        '<input type="Hidden" name="item.PurchaseLineId" value="' + object.PurchaseLineId + '">' +
+                        '</td>' +
+                        '</tr>'
+                    $("#GRNline").append(row);
+                });
+            }
+        });
+    }
+</script>
+<br />
+<div class="row">
+    <div class="table-responsive" style="overflow-x:scroll;overflow-y:auto;width:100%;max-height:350px">
+        <table class="table table-bordered">
+            <tr>
+                <th class="form-control-sm sm-2">Product Name</th>
+                <th class="form-control-sm sm-2">Item Name</th>
+                <th class="form-control-sm sm-2">Unit Name</th>
+                <th class="form-control-sm sm-2">PO Qty</th>
+                <th class="form-control-sm sm-2">Accepted Qty</th>
+                <th class="form-control-sm sm-2">Rejected Qty</th>
+                <th class="form-control-sm sm-2">Free Qty</th>
+                <th class="form-control-sm sm-2">PO Rate</th>
+                <th class="form-control-sm sm-2">Basic Amount</th>
+                <th class="form-control-sm sm-2">Discount Percentage</th>
+                <th class="form-control-sm sm-2">Discount Amount</th>
+                <th class="form-control-sm sm-2">Taxable Amount</th>
+                <th class="form-control-sm sm-2">Tax Name</th>
+                <th class="form-control-sm sm-2">Tax Amount</th>
+                <th class="form-control-sm sm-2">Payable Amount</th>
+            </tr>
+            <tbody id="GRNline">
+            </tbody>
+        </table>
+
+    </div>
+    @foreach (var item in Model)
+    {
+        @Html.TextBoxFor(m => item.ProductId)
+        @Html.TextBoxFor(m => item.ItemId)
+        @Html.TextBoxFor(m => item.UnitId)
+        @Html.TextBoxFor(m => item.POQty)
+        @Html.TextBoxFor(m => item.AcceptedQty)
+        @Html.TextBoxFor(m => item.RejectedQty)
+        @Html.TextBoxFor(m => item.FreeQty)
+        @Html.TextBoxFor(m => item.PORate)
+        @Html.TextBoxFor(m => item.BasicAmount)
+        @Html.TextBoxFor(m => item.DiscountPercentage)
+        @Html.TextBoxFor(m => item.DiscountAmount)
+        @Html.TextBoxFor(m => item.TaxableAmount)
+        @Html.TextBoxFor(m => item.TaxId)
+        @Html.TextBoxFor(m => item.TaxAmount)
+        @Html.TextBoxFor(m => item.PayableAmount)
+
+
+    }
+</div>
+
+<button onclick="GetGRNLine()">Load GRN Line</button>

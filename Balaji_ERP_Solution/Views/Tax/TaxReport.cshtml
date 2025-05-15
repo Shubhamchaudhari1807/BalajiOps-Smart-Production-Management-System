@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.SpTax_Result>
+@{
+    Layout = null;
+}
+<table class="table">
+    <tr>
+        <th>
+           Tax Name
+        </th>
+        <th>
+            Tax Percentage
+        </th>
+        
+        <th>
+            Action
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.TaxName)
+                @Html.HiddenFor(model => item.TaxId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.TaxPercentage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "GetDataById", new { id = item.TaxId })|
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaxId })
+            </td>
+        </tr>
+    }
+</table>

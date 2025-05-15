@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbBalajiProductsManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyContactNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Costing">
+    <Key>
+      <PropertyRef Name="CostId" />
+    </Key>
+    <Property Name="CostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cost_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Formulation">
+    <Key>
+      <PropertyRef Name="FormulationId" />
+    </Key>
+    <Property Name="FormulationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormulationCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="ItemId" Type="Int32" />
+    <Property Name="FormulaQuantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PurchaseLineId" Type="Int32" />
+    <Property Name="FormulationHeaderId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="FormulationHeader">
+    <Key>
+      <PropertyRef Name="FormulationHeaderId" />
+    </Key>
+    <Property Name="FormulationHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormulationName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FormulationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Godown">
+    <Key>
+      <PropertyRef Name="GodownId" />
+    </Key>
+    <Property Name="GodownId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlantId" Type="Int32" />
+    <Property Name="GodownName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="GodownAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="ItemName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Max_Qty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Min_Qty" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Packing">
+    <Key>
+      <PropertyRef Name="PackingId" />
+    </Key>
+    <Property Name="PackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackingName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PackingFirstConversion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PackingSecondConversion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonTypeId" Type="Int32" />
+    <Property Name="PersonName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PersonAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PersonContact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PersonEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Plant">
+    <Key>
+      <PropertyRef Name="PlantId" />
+    </Key>
+    <Property Name="PlantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComapnyId" Type="Int32" />
+    <Property Name="PlantName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Capacity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PlantAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Flammable" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Production">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+    </Key>
+    <Property Name="ProductionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="Int32" />
+    <Property Name="Production_Quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PurchaseLineId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductionHeader">
+    <Key>
+      <PropertyRef Name="ProductionHeaderId" />
+    </Key>
+    <Property Name="ProductionHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProductionId" Type="Int32" />
+    <Property Name="ProductionDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PurchaseHeader">
+    <Key>
+      <PropertyRef Name="PurchaseHeaderId" />
+    </Key>
+    <Property Name="PurchaseHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+    <Property Name="PersonId" Type="Int32" />
+    <Property Name="BasicAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TaxAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PlantId" Type="Int32" />
+    <Property Name="GodownId" Type="Int32" />
+    <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PurchaseLine">
+    <Key>
+      <PropertyRef Name="PurchaseLineId" />
+    </Key>
+    <Property Name="PurchaseLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurchaseHeaderId" Type="Int32" />
+    <Property Name="ItemId" Type="Int32" />
+    <Property Name="TaxId" Type="Int32" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UnitId" Type="Int32" />
+    <Property Name="PackingId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="DiscountOnAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountOnItem" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FreeQuantity" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="TaxId" />
+    </Key>
+    <Property Name="TaxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaxName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TaxPercentage" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="UnitId" />
+    </Key>
+    <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="DbBalajiProductsManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="Costings" EntityType="Self.Costing" />
+    <EntitySet Name="Formulations" EntityType="Self.Formulation" />
+    <EntitySet Name="FormulationHeaders" EntityType="Self.FormulationHeader" />
+    <EntitySet Name="Godowns" EntityType="Self.Godown" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="Packings" EntityType="Self.Packing" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="Plants" EntityType="Self.Plant" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Productions" EntityType="Self.Production" />
+    <EntitySet Name="ProductionHeaders" EntityType="Self.ProductionHeader" />
+    <EntitySet Name="PurchaseHeaders" EntityType="Self.PurchaseHeader" />
+    <EntitySet Name="PurchaseLines" EntityType="Self.PurchaseLine" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Taxes" EntityType="Self.Tax" />
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <FunctionImport Name="sp_cost" ReturnType="Collection(DbBalajiProductsManagementModel.sp_cost_Result)" />
+    <FunctionImport Name="SpCompany" ReturnType="Collection(DbBalajiProductsManagementModel.SpCompany_Result)" />
+    <FunctionImport Name="SpGodown" ReturnType="Collection(DbBalajiProductsManagementModel.SpGodown_Result)" />
+    <FunctionImport Name="SpFormulation" ReturnType="Collection(DbBalajiProductsManagementModel.SpFormulation_Result)" />
+  </EntityContainer>
+  <ComplexType Name="sp_cost_Result">
+    <Property Type="Int32" Name="CostId" Nullable="false" />
+    <Property Type="String" Name="Cost_Type" Nullable="true" MaxLength="20" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SpCompany_Result">
+    <Property Type="Int32" Name="CompanyId" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="true" />
+    <Property Type="String" Name="GST" Nullable="true" />
+    <Property Type="String" Name="CompanyAddress" Nullable="true" />
+    <Property Type="String" Name="CompanyContactNo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SpGodown_Result">
+    <Property Type="Int32" Name="GodownId" Nullable="false" />
+    <Property Type="Int32" Name="PlantId" Nullable="true" />
+    <Property Type="String" Name="GodownName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="GodownAddress" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SpFormulation_Result">
+    <Property Type="Int32" Name="FormulationId" Nullable="false" />
+    <Property Type="String" Name="FormulationCode" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ProductId" Nullable="true" />
+    <Property Type="Int32" Name="ItemId" Nullable="true" />
+    <Property Type="Decimal" Name="FormulaQuantity" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="PurchaseLineId" Nullable="true" />
+    <Property Type="Int32" Name="FormulationHeaderId" Nullable="true" />
+  </ComplexType>
+</Schema>

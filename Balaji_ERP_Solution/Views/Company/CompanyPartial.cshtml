@@ -1,0 +1,49 @@
+﻿@model Balaji_ERP_Solution.DataContext.Company
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <script src="~/ProjectScript/Companyvalidation.js"></script>
+    <div class="form-horizontal">
+        <br />
+        <h4 class="text-center bg-success">Company</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-3">
+            <label>Company Name<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", id = "CompanyName", onkeyup = "validateAndSubmitForm()" })
+            <span id="CompanyNameSpan"></span>
+            @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CompanyId)
+        </div>
+
+        <div class="col-md-3">
+            <label>GST<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.GST, new { @class = "form-control", id = "GST", onkeyup = "validateAndSubmitForm()" })
+            <span id="GSTSpan"></span>
+            @Html.ValidationMessageFor(model => model.GST, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Company Address<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control", id = "CompanyAddress", onkeyup = "validateAndSubmitForm()" })
+            <span id="CompanyAddressSpan"></span>
+            @Html.ValidationMessageFor(model => model.CompanyAddress, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Contact Number<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.CompanyContactNo, new { @class = "form-control", id = "idCompanyContact" })
+            <span id="CompanyContactSpan"></span>
+            @Html.ValidationMessageFor(model => model.CompanyContactNo, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Company Logo</label>
+            <input type="file" name="CompanyLogoImage" id="companyLogoFile" accept="Image/*" />
+        </div>
+    </div>
+    </div>
+    <br />
+    @*<button type="submit"">Save Record</button>*@
+}

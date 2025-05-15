@@ -1,0 +1,230 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.FormulationLine>
+@{
+    int i;
+}
+@{
+    int a;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+</head>
+<body>
+    <div class="card-header bg-dark">
+        <h5>
+            <span style="float:right">
+                <a style="color:red;" OnClick="Addrow()">
+                    <span class="fa fa-plus" style="color:none"></span>
+                </a>
+                <a style="color: green;" OnClick="DeleteRow()">
+                    <span class="fa fa-minus" style="color:none"></span>
+                </a>
+            </span>
+        </h5>
+    </div>
+    @{
+
+    }
+
+    <div class="table-responsive" style="overflow-x:scroll;overflow-y:auto;width:100%;max-height:350px">
+        <table class="table table-bordered">
+            <tr>
+                <th class="form-control-sm sm-2">Sr</th>
+                <th class="form-control-sm sm-2">Product Name</th>
+                <th class="form-control-sm sm-2">Item Name</th>
+                <th class="form-control-sm sm-2">Quantity</th>
+            </tr>
+            <tbody id="FormulationLine">
+                @for (i = 1; i <= 1; i++)
+                {
+                    a = i;
+                    <tr>
+                        <td>@a</td>
+                        <td>@Html.DropDownList("item.ProductId", new SelectList(ViewBag.AllProductName, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classProduct", id = "ProductId", OnChange = "LoadItem(this),FormulationLineValidation()",onclick="FormulationLineValidation()" })</td>
+                        <td>
+                            <select id="ItemId" name="item.ItemId" class="form-control form-control-sm sm-2 classddlItem" onchange="GetItemId(this),FormulationLineValidation()",onclick="FormulationLineValidation()"></select>
+                            @*@Html.Hidden("ItemId",new { @class ="form-control form-control-sm sm-2 classGetItem", id = "idGetItem" })*@
+                        </td>
+                        <td>@Html.TextBox("item.ItemQty", "", new { @class = "form-control form-control-sm sm-2 classItemQuantity", id = "idItemQuantity", OnChange = "CalculateHeaderQuantity(),ToCheckQuantity()",onclick= "FormulationLineValidation()",onkeyUp= "FormulationLineValidation()" })</td>
+                    </tr>
+                }
+            </tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td></td>
+                    <td>@Html.DropDownListFor(model => item.ProductId, new SelectList(ViewBag.ProductName, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classProduct", id = "ProductId", onchange = "LoadItem(this),FormulationLineValidation()" })</td>
+                    <td>@Html.TextBoxFor(model => item.ItemId, "", new { @class = "form-control form-control-sm sm-2 classddlItem", id = "idItemId",onchange= "FormulationLineValidation()" })</td>
+                    <td>@Html.TextBoxFor(model => item.ItemQty, new { @class = "form-control form-control-sm sm-2 classItemQuantity", id = "idItemQuantity", OnChange = "CalculateHeaderQuantity(),ToCheckQuantity()" })</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-md-offset-2 col-md-3">
+        <br />
+        @*<input type="submit" value="Save Record" class="btn btn-danger" />*@
+    </div>
+    <script>
+        var rowCount = 2;
+        function Addrow() {
+            var row = '<tr>' +
+                '<td>'+rowCount+'</td>' +
+                '<td>@Html.Raw(Ajax.JavaScriptStringEncode(Html.DropDownList("item.ProductId", new SelectList(ViewBag.AllProductName, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classProduct", id = "ProductId", OnChange = "LoadItem(this),FormulationLineValidation()",onclick="FormulationLineValidation()"}).ToHtmlString()))</td>' +
+                '<td> <select id="ItemId" name="item.ItemId" class="form-control form-control-sm sm-2 classddlItem" onchange="GetItemId(this),FormulationLineValidation()",onclick="FormulationLineValidation()"></select> @*@Html.Hidden("ItemId",new { @class ="form-control form-control-sm sm-2 classGetItem", id = "idGetItem" })*@</td > '+
+                '<td>@Html.TextBox("item.ItemQty", "", new { @class = "form-control form-control-sm sm-2 classItemQuantity", id = "idItemQuantity", OnChange = "CalculateHeaderQuantity(),ToCheckQuantity(),FormulationLineValidation()",onclick = "FormulationLineValidation()"})</td>' +
+                '</tr>';
+            $("#FormulationLine").append(row);
+            rowCount++;
+        }
+        function DeleteRow() {
+            var table = document.getElementById("FormulationLine");
+            var rowCount = table.rows.length;
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+            }
+            CalculateHeaderQuantity()
+            ToCheckQuantity()
+        }
+        function FormulationLineValidation() {
+            console.log("Hi");
+            var component = $('.classProduct, .classddlItem, .classItemQuantity');
+            component.each(function () {
+                if ($(this).val() == "" || $(this).val() == null || $(this).val() == undefined || $(this).val() == "0") {
+                    $(this).css("border-color", "red");
+                } else {
+                    $(this).css("border-color", "");
+                }
+            });
+        }
+        //function GetItem() {
+        //    console.log("Hi")
+        //    $("#idItemId").autocomplete({
+        //        source: function (request, response) {
+        //            $.ajax({
+        //                url: "/Formulation/GetItem",
+        //                type: "POST",
+        //                dataType: "json",
+        //                data: { ItemName: request.term },
+        //                success: function (data) {
+        //                    console.log(data);
+        //                    response($.map(data, function (item) {
+        //                        return {
+        //                            label: item.ItemName,
+        //                            value: item.ItemName
+        //                        };
+        //                    }));
+        //                }
+        //            });
+        //        },
+        //        messages: {
+        //            noResults: "",
+        //            results: ""
+        //        }
+        //    });
+        //}
+        //function GetItem() {
+        //    console.log("hi")
+        //    $("#idItemId").autocomplete({
+        //        source: function (request, response) {
+        //            $.ajax({
+        //                url: "/Login/GetEmployee",
+        //                type: "POST",
+        //                dataType: "json",
+        //                data: { Prefix: request.term },
+        //                success: function (data) {
+        //                    console.log(data)
+        //                    response($.map(data, function (item) {
+        //                        return { label: item.empname, value: item.empname };
+        //                    }))
+
+        //                }
+        //            })
+        //        },
+        //        messages: {
+        //            noResults: "", results: ""
+        //        }
+        //    });
+
+        //}
+        function LoadItem(str) {
+            tr = $(str).closest("tr")
+            var productId = tr.find('.classProduct').val()
+            $.ajax({
+                type: "POST",
+                url: "/Purchase/GetItem",
+                data: { productId: productId },
+                success: function (data) {
+                    var classddlItem = tr.find('.classddlItem')
+                    classddlItem.empty()
+                    $.each(data, function (index, data) {
+                        classddlItem.append($('<option/>', {
+                            value: data.Value,
+                            text: data.Text,
+                        }));
+                        console.log(data.Value + data.Text)
+                    });
+                },
+                error: function (ex) {
+                    alert("Error loading items: " + ex);
+                }
+            });
+        }
+        function GetItemId(str) {
+            tr = $(str).closest("tr")
+            let itemid = tr.find(".classddlItem").val()
+            tr.find(".classGetItem").val(itemid)
+        }
+        function CalculateHeaderQuantity() {
+            console.log("Hi")
+            let QuantitySum = 0;
+            $(".classItemQuantity").each(function () {
+                if (!isNaN(this.value) && this.value.length != 0) {
+                    QuantitySum += parseFloat(this.value)
+                }
+            })
+            console.log(QuantitySum)
+            $(".classFormulaInput").val(QuantitySum);
+        }
+        function ToCheckQuantity() {
+            if ($(".classFormulationHeaderQty").val() == $(".classFormulaInput").val()) {
+                $("#idSaveRecord").prop("disabled", false);
+            } else {
+                $("#idSaveRecord").prop("disabled", true);
+            }
+        }
+        function Valid() {
+        
+        }
+
+        //$(document).ready(function () {
+        //    $("#idSaveRecord").click(function () {
+        //        console.log("FormulationLineValidation result:", FormulationLineValidation());
+        //        console.log("FormulationHeaderQty:", $(".classFormulationHeaderQty").val());
+        //        console.log("FormulaInput:", $(".classFormulaInput").val());
+
+        //        if (FormulationLineValidation()) {
+        //            if ($(".classFormulationHeaderQty").val() == $(".classFormulaInput").val()) {
+        //                $("#formulationForm").submit();
+        //            } else {
+        //                alert("Formulation header quantity does not match the formula input quantity.");
+        //            }
+        //        } else {
+        //            alert("Please fill in all required fields.");
+        //        }
+        //    });
+        //});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "GodownView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("SaveOrUpdate", "Godown", FormMethod.Post,new { id = "GodownForm" }))
+{
+    @Html.Partial("~/Views/Godown/GodownPartial.cshtml")
+    @*<button type="submit" class="btn btn bg-danger">Save Record</button>*@
+}
+@Html.Action("GodownReport")

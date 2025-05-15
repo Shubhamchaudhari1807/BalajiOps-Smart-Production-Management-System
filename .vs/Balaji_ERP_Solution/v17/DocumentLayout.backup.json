@@ -1,0 +1,278 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|c:\\users\\admin\\desktop\\balaji_erp_solution\\balaji_erp_solution\\balaji_erp_solution\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|c:\\users\\admin\\desktop\\balaji_erp_solution\\balaji_erp_solution\\balaji_erp_solution\\controllers\\formulationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\controllers\\formulationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\controllers\\godowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\controllers\\godowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\controllers\\packingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\controllers\\packingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\controllers\\grncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\controllers\\grncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\views\\company\\companypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\views\\company\\companypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\models\\plantviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\models\\plantviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\models\\purchaseheaderlinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\models\\purchaseheaderlinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\models\\grnheaderline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\models\\grnheaderline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\models\\plantcompanycombinedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\models\\plantcompanycombinedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\models\\productionheaderline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\models\\productionheaderline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\balaji_erp_solution\\models\\formulationheaderlinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}|Balaji_ERP_Solution\\Balaji_ERP_Solution.csproj|solutionrelative:balaji_erp_solution\\models\\formulationheaderlinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a34b1c5d-6d37-4a0c-a8b0-99f8e8158b48}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Web.config",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Web.config",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Web.config",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Web.config",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-02-22T05:31:44.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PackingController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\PackingController.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Controllers\\PackingController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\PackingController.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Controllers\\PackingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:35:41.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:35:36.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GRNController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\GRNController.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Controllers\\GRNController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\GRNController.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Controllers\\GRNController.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:35:10.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GodownController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\GodownController.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Controllers\\GodownController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\GodownController.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Controllers\\GodownController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:35:00.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormulationController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\FormulationController.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Controllers\\FormulationController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\FormulationController.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Controllers\\FormulationController.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAUwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:34:49.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CompanyController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\CompanyController.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Controllers\\CompanyController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Controllers\\CompanyController.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Controllers\\CompanyController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:33:42.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CompanyPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Views\\Company\\CompanyPartial.cshtml",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Views\\Company\\CompanyPartial.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Views\\Company\\CompanyPartial.cshtml",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Views\\Company\\CompanyPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-18T07:33:02.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlantViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\PlantViewModel.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Models\\PlantViewModel.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\PlantViewModel.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Models\\PlantViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:32:46.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PurchaseHeaderLineModel.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\PurchaseHeaderLineModel.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Models\\PurchaseHeaderLineModel.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\PurchaseHeaderLineModel.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Models\\PurchaseHeaderLineModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:32:42.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlantCompanyCombineData.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\PlantCompanyCombineData.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Models\\PlantCompanyCombineData.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\PlantCompanyCombineData.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Models\\PlantCompanyCombineData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:32:35.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProductionHeaderLine.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\ProductionHeaderLine.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Models\\ProductionHeaderLine.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\ProductionHeaderLine.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Models\\ProductionHeaderLine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:32:33.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FormulationHeaderLineModel.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\FormulationHeaderLineModel.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Models\\FormulationHeaderLineModel.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\FormulationHeaderLineModel.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Models\\FormulationHeaderLineModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:32:30.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GRNHeaderLine.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\GRNHeaderLine.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Models\\GRNHeaderLine.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\GRNHeaderLine.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Models\\GRNHeaderLine.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:32:28.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\LoginModel.cs",
+              "RelativeDocumentMoniker": "Balaji_ERP_Solution\\Models\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Balaji_ERP_Solution\\Models\\LoginModel.cs",
+              "RelativeToolTip": "Balaji_ERP_Solution\\Models\\LoginModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T07:32:26.715Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

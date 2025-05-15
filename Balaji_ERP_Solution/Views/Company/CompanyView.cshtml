@@ -1,0 +1,6 @@
+﻿@using (Html.BeginForm("SaveOrUpdate", "Company", FormMethod.Post, new { id = "companyForm"}))
+{
+    @Html.Partial("~/Views/Company/CompanyPartial.cshtml")
+    <button type="button" onclick="validateAndSubmitForm()">Save Record</button>
+}
+@Html.Action("CompanyReport")

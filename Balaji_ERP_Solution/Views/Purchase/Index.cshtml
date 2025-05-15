@@ -1,0 +1,17 @@
+﻿@model Balaji_ERP_Solution.Models.PurchaseHeaderLineModel
+
+
+@using (Html.BeginForm("SaveOrUpdate", "Purchase", FormMethod.Post))
+
+    {
+
+
+        @Html.Partial("~/Views/Purchase/PurchaseHeaderPartial.cshtml", Model.Header)
+
+        @Html.Partial("~/Views/Purchase/PurchaseLinePartial.cshtml", Model.Lines)
+
+        <button type="submit">Save Record</button> 
+    }
+<br />
+
+

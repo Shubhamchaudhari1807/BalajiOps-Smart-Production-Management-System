@@ -1,0 +1,9 @@
+﻿@model Balaji_ERP_Solution.Models.FormulationHeaderLineModel
+
+@using (Html.BeginForm("SaveOrUpdate", "Formulation", FormMethod.Post, new { id = "formulationForm" }))
+{
+    @Html.Partial("~/Views/Formulation/FormulationHeaderPartial.cshtml", Model.FormulationHeader)
+    <br />
+    <button type="submit" id="idSaveRecord">Save Record</button>
+    @Html.Partial("~/Views/Formulation/FormulationLinePartial.cshtml", Model.FormulationLine)
+}

@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "TaxView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("SaveOrUpdate", "Tax", FormMethod.Post))
+{
+    @Html.Partial("~/Views/Tax/TaxPartial.cshtml")
+    @*<button type="submit" class="btn btn bg-danger">Save Record</button>*@
+}
+@Html.Action("TaxReport")

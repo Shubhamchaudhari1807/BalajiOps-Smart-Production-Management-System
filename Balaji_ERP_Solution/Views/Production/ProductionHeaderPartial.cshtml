@@ -1,0 +1,73 @@
+﻿@model Balaji_ERP_Solution.DataContext.ProductionHeader
+<div class="form-horizontal">
+    <br />
+    <h4 class="text-center bg-success">Production Header</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <label>Production Date<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.ProductionDate, new { @class = "form-control", type = "Date", id = "idFormulationDate" })
+            @Html.ValidationMessageFor(model => model.ProductionDate, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Formulation Name<span style="color:red">*</span></label>
+            @Html.DropDownListFor(model => model.FormulationHeaderId, new SelectList(ViewBag.FormulationList, "Value", "Text"), new { @class = "form-control", id = "idFormulationId", onchange = "GetHeaderData()" })
+            @Html.ValidationMessageFor(model => model.FormulationHeaderId, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Item Name</label>
+            <input type="text" class="form-control" id="idItem" readonly="readonly" />
+        </div>
+
+        <div class="col-md-3">
+            <label>Formulation Quantity</label>
+            <input type="text" class="form-control classFormulaQty" id="idFormulationQuantity" readonly="readonly" />
+        </div>
+
+        <div class="col-md-3">
+            <label>Production Qty</label>
+            @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control classProductionHeaderQty", id = "idProductionHeaderQty",onkeyup= "CalculateQuality()" })
+            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Actual Qty</label>
+            @Html.TextBoxFor(model => model.ActualQty, new { @class = "form-control classActualQty", id = "idActualQty" })
+            @Html.ValidationMessageFor(model => model.ActualQty, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Loss Qty</label>
+            @Html.TextBoxFor(model => model.LossQty, new { @class = "form-control classLossQty", id = "idLossQty" })
+            @Html.ValidationMessageFor(model => model.ActualQty, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<script>
+          
+
+    function GetHeaderData() {
+        console.log("Hi");
+        let FormulationId = $("#idFormulationId").val();
+        $.getJSON('/Production/GetFormulationData', { FormulationId: FormulationId }, function (data) {
+            console.log("Hi")
+            $("#idItem").val(data.ItemName)
+            $("#idFormulationQuantity").val(data.FormulaQty)
+            GetProductionLine()
+        });
+    }
+    function CalculateQuality() {
+        console.log("how are you?")
+        let productionQuantity = parseFloat($("#idProductionHeaderQty").val());
+        $(".classItemQty").each(function (index, element) {
+            let itemQuantity = parseFloat($(element).val());
+            let result = productionQuantity * itemQuantity;
+            $(element).closest("tr").find(".classQuantityRequired").val(result);
+        });
+    }
+
+    //function AutoGenerateCode() {
+    //    $.getJSON('/Formulation/GenerateCode',
+    //        function (data) {
+    //            $("#idFormulationCode").val(data)
+    //        })
+    //}//we can use this code but we use property bind from index method that is =>formulationHeader.FormulationCode = GenerateCode();
+</script>

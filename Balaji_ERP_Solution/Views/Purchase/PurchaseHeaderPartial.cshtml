@@ -1,0 +1,88 @@
+﻿@model Balaji_ERP_Solution.DataContext.PurchaseHeader
+
+
+<div class="form-horizontal">
+    <br />
+    <h4 class="text-center bg-success">PurchaseHeader</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <label>PurchaseDate<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.PurchaseDate, new { @class = "form-control", type = "Date", id = "idPurchaseDate" })
+            <span id="SpanPurchaseDate"></span>
+            @Html.HiddenFor(model => model.PurchaseHeaderId)
+            @Html.ValidationMessageFor(model => model.PurchaseDate, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Supplier Name<span style="color:red">*</span></label>
+            @Html.DropDownListFor(model => model.PersonId, new SelectList(ViewBag.SupplierList, "Value", "Text"), new { @class = "form-control", id = "idSupplierId" })
+            @Html.ValidationMessageFor(model => model.PersonId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Plant<span style="color:red">*</span></label>
+            @Html.DropDownListFor(model => model.PlantId, new SelectList(ViewBag.PlantList, "Value", "Text"), new { @class = "form-control", id = "idPlantId", onchange= "LoadGodown()" })
+            @Html.ValidationMessageFor(model => model.PlantId, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Godown Name</label>
+            <select id="ddlGodown" class="form-control" OnChange="GetGodownId()"></select>
+            @Html.HiddenFor(model => model.GodownId, new { id = "GodownId" })
+
+        </div>
+        <div class="col-md-3">
+            <label>BasicAmount<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.BasicAmount, new { @class = "form-control classHeaderBasicAmount", id = "idBasicAmount" })
+            <span id="SpanBasicAmount"></span>
+            @Html.ValidationMessageFor(model => model.BasicAmount, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Tax Amount<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.TaxAmount, new { @class = "form-control classHeaderTaxAmount", id = "idTaxAmount" })
+            @Html.ValidationMessageFor(model => model.TaxAmount, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Discount Amount<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.DiscountAmount, new { @class = "form-control classHeaderDiscountAmount", id = "idDiscountAmount" })
+            @Html.ValidationMessageFor(model => model.DiscountAmount, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Total Amount<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.TotalAmount, new { @class = "form-control classHeaderPayableAmount", id = "idTotalAmount" })
+            @Html.ValidationMessageFor(model => model.TotalAmount, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+</div>
+<script>
+    function LoadGodown() {
+        var plantId = $("#idPlantId").val()
+        $.ajax({
+            type: "POST",
+            url: "/Purchase/GetGodown",
+            data: { plantId: plantId },
+            success: function (data) {
+                console.log(data)
+                var ddlGodown = $("#ddlGodown");
+                ddlGodown.empty();
+                $.each(data, function (index, data) {
+                    ddlGodown.append($('<option/>', {
+                        value: data.Value,
+                        text: data.Text,
+                    }));
+                    console.log(data.Value + data.Text)
+                });
+            }
+            ,
+            error: function (ex) {
+                alert("Error loading Godowns: " + ex);
+            }
+        });
+    }
+    function GetGodownId() {
+        let godownid = $("#ddlGodown").val()
+        $("#GodownId").val(godownid)
+    }
+
+</script>

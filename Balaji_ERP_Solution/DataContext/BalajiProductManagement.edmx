@@ -1,0 +1,1438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbBalajiProductsManagement.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar(max)" />
+          <Property Name="GST" Type="nvarchar(max)" />
+          <Property Name="CompanyAddress" Type="nvarchar(max)" />
+          <Property Name="CompanyLogo" Type="nvarchar(max)" />
+          <Property Name="CompanyContactNo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Costing">
+          <Key>
+            <PropertyRef Name="CostId" />
+          </Key>
+          <Property Name="CostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cost_Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormulationHeader">
+          <Key>
+            <PropertyRef Name="FormulationHeaderId" />
+          </Key>
+          <Property Name="FormulationHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormulationName" Type="nvarchar(max)" />
+          <Property Name="FormulationDate" Type="datetime" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="FormulationCode" Type="nvarchar(max)" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="FormulaQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="attr1" Type="int" />
+          <Property Name="AcFlag" Type="bit" />
+        </EntityType>
+        <EntityType Name="FormulationLine">
+          <Key>
+            <PropertyRef Name="FormulationLineId" />
+          </Key>
+          <Property Name="FormulationLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormulationHeaderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="ItemQty" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Godown">
+          <Key>
+            <PropertyRef Name="GodownId" />
+          </Key>
+          <Property Name="GodownId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantId" Type="int" />
+          <Property Name="GodownName" Type="nvarchar" MaxLength="20" />
+          <Property Name="GodownAddress" Type="nvarchar" MaxLength="20" />
+          <Property Name="CompanyId" Type="int" />
+        </EntityType>
+        <EntityType Name="GRNHeader">
+          <Key>
+            <PropertyRef Name="GRNHeaderId" />
+          </Key>
+          <Property Name="GRNHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseHeaderId" Type="int" />
+          <Property Name="GRNDate" Type="datetime" />
+          <Property Name="VehicleNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="VehicleWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VehicleLoadedWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DCNo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GRNLine">
+          <Key>
+            <PropertyRef Name="GRNLineId" />
+          </Key>
+          <Property Name="GRNLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GRNHeaderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="POQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AcceptedQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RejectedQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FreeQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PORate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BasicAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountPercentage" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxableAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxId" Type="int" />
+          <Property Name="TaxAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PayableAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseLineId" Type="int" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Max_Qty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Min_Qty" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Packing">
+          <Key>
+            <PropertyRef Name="PackingId" />
+          </Key>
+          <Property Name="PackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackingName" Type="nvarchar(max)" />
+          <Property Name="PackingFirstConversion" Type="nvarchar(max)" />
+          <Property Name="PackingSecondConversion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonTypeId" Type="int" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="20" />
+          <Property Name="PersonAddress" Type="nvarchar" MaxLength="30" />
+          <Property Name="PersonContact" Type="nvarchar" MaxLength="20" />
+          <Property Name="PersonEmail" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="PersonType">
+          <Key>
+            <PropertyRef Name="PersonTypeId" />
+          </Key>
+          <Property Name="PersonTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="PlantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComapnyId" Type="int" />
+          <Property Name="PlantName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Capacity" Type="nvarchar" MaxLength="20" />
+          <Property Name="PlantAddress" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Flammable" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ProductionHeader">
+          <Key>
+            <PropertyRef Name="ProductionHeaderId" />
+          </Key>
+          <Property Name="ProductionHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormulationHeaderId" Type="int" />
+          <Property Name="ProductionDate" Type="datetime" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ActualQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LossQty" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ProductionLine">
+          <Key>
+            <PropertyRef Name="ProductionLineId" />
+          </Key>
+          <Property Name="ProductionLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="QuantityRequired" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Stock" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductionHeaderId" Type="int" />
+          <Property Name="GRNLineId" Type="int" />
+          <Property Name="GRNHeaderId" Type="int" />
+        </EntityType>
+        <EntityType Name="PurchaseHeader">
+          <Key>
+            <PropertyRef Name="PurchaseHeaderId" />
+          </Key>
+          <Property Name="PurchaseHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="PlantId" Type="int" />
+          <Property Name="GodownId" Type="int" />
+          <Property Name="BasicAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PurchaseLine">
+          <Key>
+            <PropertyRef Name="PurchaseLineId" />
+          </Key>
+          <Property Name="PurchaseLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseHeaderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="PackingId" Type="int" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BasicAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountPercentage" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxableAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxId" Type="int" />
+          <Property Name="TaxAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PayableAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tax">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxName" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPercentage" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="userTable">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar(max)" />
+          <Property Name="UserPass" Type="nvarchar(max)" />
+        </EntityType>
+        <Function Name="SpAllPurchase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpCalculateStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpCosting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpDatewise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SpFormulationMax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpGetFormulationHeaderInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FormulationId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SpGetHeaderInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="POId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SpGodown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpGRNLineData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="POId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SpItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpItemWiseDateWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemId" Type="int" Mode="In" />
+          <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SpPacking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpPlant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpProductionLineData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FormulationId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SpProductWiseDateWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductId" Type="int" Mode="In" />
+          <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SpPurchaseHeader" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpSupplierWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SupplierId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SpSupplierwiseDatewise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SupplierId" Type="int" Mode="In" />
+          <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SpTax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DbBalajiProductsManagementStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Costing" EntityType="Self.Costing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormulationHeader" EntityType="Self.FormulationHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormulationLine" EntityType="Self.FormulationLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Godown" EntityType="Self.Godown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GRNHeader" EntityType="Self.GRNHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GRNLine" EntityType="Self.GRNLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packing" EntityType="Self.Packing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonType" EntityType="Self.PersonType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductionHeader" EntityType="Self.ProductionHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductionLine" EntityType="Self.ProductionLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseHeader" EntityType="Self.PurchaseHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseLine" EntityType="Self.PurchaseLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userTable" EntityType="Self.userTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbBalajiProductsManagement" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyContactNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Costing">
+          <Key>
+            <PropertyRef Name="CostId" />
+          </Key>
+          <Property Name="CostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cost_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Godown">
+          <Key>
+            <PropertyRef Name="GodownId" />
+          </Key>
+          <Property Name="GodownId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlantId" Type="Int32" />
+          <Property Name="GodownName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GodownAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Max_Qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Min_Qty" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Packing">
+          <Key>
+            <PropertyRef Name="PackingId" />
+          </Key>
+          <Property Name="PackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackingName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PackingFirstConversion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PackingSecondConversion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonTypeId" Type="Int32" />
+          <Property Name="PersonName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PersonAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PersonContact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PersonEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="PlantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComapnyId" Type="Int32" />
+          <Property Name="PlantName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PlantAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Flammable" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tax">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPercentage" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="BalajiProductsManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Costings" EntityType="Self.Costing" />
+          <EntitySet Name="Godowns" EntityType="Self.Godown" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Packings" EntityType="Self.Packing" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="Plants" EntityType="Self.Plant" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Taxes" EntityType="Self.Tax" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <FunctionImport Name="SpCompany" ReturnType="Collection(DbBalajiProductsManagement.SpCompany_Result)" />
+          <FunctionImport Name="SpCosting" ReturnType="Collection(DbBalajiProductsManagement.SpCosting_Result)" />
+          <FunctionImport Name="SpGodown" ReturnType="Collection(DbBalajiProductsManagement.SpGodown_Result)" />
+          <FunctionImport Name="SpItem" ReturnType="Collection(DbBalajiProductsManagement.SpItem_Result)" />
+          <FunctionImport Name="SpPacking" ReturnType="Collection(DbBalajiProductsManagement.SpPacking_Result)" />
+          <FunctionImport Name="SpPerson" ReturnType="Collection(DbBalajiProductsManagement.SpPerson_Result)" />
+          <FunctionImport Name="SpPlant" ReturnType="Collection(DbBalajiProductsManagement.SpPlant_Result)" />
+          <FunctionImport Name="SpPurchaseHeader" ReturnType="Collection(DbBalajiProductsManagement.SpPurchaseHeader_Result)" />
+          <FunctionImport Name="SpTax" ReturnType="Collection(DbBalajiProductsManagement.SpTax_Result)" />
+          <FunctionImport Name="SpUnit" ReturnType="Collection(DbBalajiProductsManagement.SpUnit_Result)" />
+          <EntitySet Name="PurchaseLines" EntityType="DbBalajiProductsManagement.PurchaseLine" />
+          <FunctionImport Name="SpAllPurchase" ReturnType="Collection(DbBalajiProductsManagement.SpAllPurchase_Result)" />
+          <FunctionImport Name="SpDatewise" ReturnType="Collection(DbBalajiProductsManagement.SpDatewise_Result)">
+            <Parameter Name="fromdate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SpItemWiseDateWise" ReturnType="Collection(DbBalajiProductsManagement.SpItemWiseDateWise_Result)">
+            <Parameter Name="ItemId" Mode="In" Type="Int32" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SpProductWiseDateWise" ReturnType="Collection(DbBalajiProductsManagement.SpProductWiseDateWise_Result)">
+            <Parameter Name="ProductId" Mode="In" Type="Int32" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SpSupplierWise" ReturnType="Collection(DbBalajiProductsManagement.SpSupplierWise_Result)">
+          <Parameter Name="SupplierId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="test">
+          <Parameter Name="s" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="PersonTypes" EntityType="DbBalajiProductsManagement.PersonType" />
+          <FunctionImport Name="SpGetHeaderInfo" ReturnType="Collection(DbBalajiProductsManagement.SpGetHeaderInfo_Result)">
+          <Parameter Name="POId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="GRNHeaders" EntityType="DbBalajiProductsManagement.GRNHeader" />
+          <EntitySet Name="GRNLines" EntityType="DbBalajiProductsManagement.GRNLine" />
+          <EntitySet Name="PurchaseHeaders" EntityType="DbBalajiProductsManagement.PurchaseHeader" />
+          <EntitySet Name="FormulationLines" EntityType="DbBalajiProductsManagement.FormulationLine" />
+          <FunctionImport Name="SpFormulationMax" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SpGRNLineData" ReturnType="Collection(DbBalajiProductsManagement.SpGRNLineData_Result)">
+          <Parameter Name="POId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SpSupplierwiseDatewise" ReturnType="Collection(DbBalajiProductsManagement.SpSupplierwiseDatewise_Result)">
+            <Parameter Name="SupplierId" Mode="In" Type="Int32" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ProductionLines" EntityType="DbBalajiProductsManagement.ProductionLine" />
+          <FunctionImport Name="SpProduct" ReturnType="Collection(DbBalajiProductsManagement.SpProduct_Result)" />
+          <FunctionImport Name="SpGetFormulationHeaderInfo" ReturnType="Collection(DbBalajiProductsManagement.SpGetFormulationHeaderInfo_Result)">
+          <Parameter Name="FormulationId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ProductionHeaders" EntityType="DbBalajiProductsManagement.ProductionHeader" />
+          <FunctionImport Name="SpCalculateStock" ReturnType="Collection(DbBalajiProductsManagement.SpCalculateStock_Result)" />
+          <EntitySet Name="FormulationHeaders" EntityType="DbBalajiProductsManagement.FormulationHeader" />
+          <FunctionImport Name="SpProductionLineData" ReturnType="Collection(DbBalajiProductsManagement.SpProductionLineData_Result)">
+          <Parameter Name="FormulationId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="userTables" EntityType="DbBalajiProductsManagement.userTable" />
+        </EntityContainer>
+        <ComplexType Name="SpCompany_Result">
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" />
+          <Property Type="String" Name="GST" Nullable="true" />
+          <Property Type="String" Name="CompanyAddress" Nullable="true" />
+          <Property Type="String" Name="CompanyContactNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SpCosting_Result">
+          <Property Type="Int32" Name="CostId" Nullable="false" />
+          <Property Type="String" Name="Cost_Type" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SpGodown_Result">
+          <Property Type="Int32" Name="GodownId" Nullable="false" />
+          <Property Type="Int32" Name="PlantId" Nullable="true" />
+          <Property Type="String" Name="GodownName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="GodownAddress" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SpItem_Result">
+          <Property Type="Int32" Name="ItemId" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Max_Qty" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Min_Qty" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpPacking_Result">
+          <Property Type="Int32" Name="PackingId" Nullable="false" />
+          <Property Type="String" Name="PackingName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PackingFirstConversion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PackingSecondConversion" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SpPerson_Result">
+          <Property Type="Int32" Name="PersonId" Nullable="false" />
+          <Property Type="Int32" Name="PersonTypeId" Nullable="true" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonAddress" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PersonContact" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonEmail" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SpPlant_Result">
+          <Property Type="Int32" Name="PlantId" Nullable="false" />
+          <Property Type="Int32" Name="ComapnyId" Nullable="true" />
+          <Property Type="String" Name="PlantName" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Capacity" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PlantAddress" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SpPurchaseHeader_Result">
+          <Property Type="Int32" Name="PurchaseHeaderId" Nullable="false" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="Decimal" Name="BasicAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="PlantId" Nullable="true" />
+          <Property Type="Int32" Name="GodownId" Nullable="true" />
+          <Property Type="Decimal" Name="DiscountAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpTax_Result">
+          <Property Type="Int32" Name="TaxId" Nullable="false" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="TaxPercentage" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpUnit_Result">
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="PurchaseLine">
+          <Key>
+            <PropertyRef Name="PurchaseLineId" />
+          </Key>
+          <Property Name="PurchaseLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseHeaderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="PackingId" Type="Int32" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BasicAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountPercentage" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxableAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxId" Type="Int32" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PayableAmount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <ComplexType Name="SpAllPurchase_Result">
+          <Property Type="String" Name="purchase_order_date" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="purchase_order_number" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="quantity" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="rate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="basic_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="discount_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="taxable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="tax_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="payable_amount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpDatewise_Result">
+          <Property Type="Int32" Name="purchase_order_number" Nullable="false" />
+          <Property Type="String" Name="purchase_order_date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="basic_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="discount_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="taxable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="tax_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="payable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BasicAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountPercentage" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PayableAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpItemWiseDateWise_Result">
+          <Property Type="Int32" Name="purchase_order_number" Nullable="false" />
+          <Property Type="String" Name="purchase_order_date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="basic_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="discount_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="taxable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="tax_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="payable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BasicAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountPercentage" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PayableAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpProductWiseDateWise_Result">
+          <Property Type="Int32" Name="purchase_order_number" Nullable="false" />
+          <Property Type="String" Name="purchase_order_date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="basic_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="discount_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="taxable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="tax_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="payable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BasicAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountPercentage" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PayableAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpSupplierWise_Result">
+          <Property Type="Int32" Name="purchase_order_number" Nullable="false" />
+          <Property Type="String" Name="purchase_order_date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="basic_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="discount_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="taxable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="tax_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="payable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BasicAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountPercentage" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PayableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="PersonType">
+          <Key>
+            <PropertyRef Name="PersonTypeId" />
+          </Key>
+          <Property Name="PersonTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="SpGetHeaderInfo_Result">
+          <Property Type="String" Name="purchase_order_date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonContact" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="GRNHeader">
+          <Key>
+            <PropertyRef Name="GRNHeaderId" />
+          </Key>
+          <Property Name="GRNHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseHeaderId" Type="Int32" />
+          <Property Name="GRNDate" Type="DateTime" Precision="3" />
+          <Property Name="VehicleNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VehicleLoadedWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DCNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GRNLine">
+          <Key>
+            <PropertyRef Name="GRNLineId" />
+          </Key>
+          <Property Name="GRNLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GRNHeaderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="POQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AcceptedQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RejectedQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FreeQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PORate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BasicAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountPercentage" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxableAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxId" Type="Int32" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PayableAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseLineId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PurchaseHeader">
+          <Key>
+            <PropertyRef Name="PurchaseHeaderId" />
+          </Key>
+          <Property Name="PurchaseHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="PlantId" Type="Int32" />
+          <Property Name="GodownId" Type="Int32" />
+          <Property Name="BasicAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="FormulationLine">
+          <Key>
+            <PropertyRef Name="FormulationLineId" />
+          </Key>
+          <Property Name="FormulationLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormulationHeaderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="ItemQty" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <ComplexType Name="SpGRNLineData_Result">
+          <Property Type="Int32" Name="PurchaseHeaderId" Nullable="true" />
+          <Property Type="Int32" Name="PurchaseLineId" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="ItemId" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="TaxId" Nullable="false" />
+          <Property Type="Decimal" Name="DiscountPercentage" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="Decimal" Name="BasicAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PayableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxPercentage" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SpSupplierwiseDatewise_Result">
+          <Property Type="Int32" Name="purchase_order_number" Nullable="false" />
+          <Property Type="String" Name="purchase_order_date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TaxName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="basic_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="discount_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="taxable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="tax_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="payable_amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BasicAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountPercentage" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxableAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PayableAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <EntityType Name="ProductionLine">
+          <Key>
+            <PropertyRef Name="ProductionLineId" />
+          </Key>
+          <Property Name="ProductionLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="QuantityRequired" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Stock" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductionHeaderId" Type="Int32" />
+          <Property Name="GRNLineId" Type="Int32" />
+          <Property Name="GRNHeaderId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="SpProduct_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Flammable" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SpGetFormulationHeaderInfo_Result">
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="FormulaQty" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <EntityType Name="ProductionHeader">
+          <Key>
+            <PropertyRef Name="ProductionHeaderId" />
+          </Key>
+          <Property Name="ProductionHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormulationHeaderId" Type="Int32" />
+          <Property Name="ProductionDate" Type="DateTime" Precision="3" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ActualQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LossQty" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <ComplexType Name="SpCalculateStock_Result">
+          <Property Type="Int32" Name="GRNLineId" Nullable="false" />
+          <Property Type="Decimal" Name="Column1" Nullable="false" Precision="38" Scale="2" />
+        </ComplexType>
+        <EntityType Name="FormulationHeader">
+          <Key>
+            <PropertyRef Name="FormulationHeaderId" />
+          </Key>
+          <Property Name="FormulationHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormulationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormulationDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="FormulationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="FormulaQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="attr1" Type="Int32" />
+          <Property Name="AcFlag" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="SpProductionLineData_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="true" />
+          <Property Type="Int32" Name="ItemId" Nullable="true" />
+          <Property Type="Decimal" Name="ItemQty" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Stock" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="GRNLineId" Nullable="false" />
+          <Property Type="Int32" Name="GRNHeaderId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="userTable">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbBalajiProductsManagementStoreContainer" CdmEntityContainer="BalajiProductsManagementEntities">
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="CompanyContactNo" ColumnName="CompanyContactNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Costings">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Costing">
+              <MappingFragment StoreEntitySet="Costing">
+                <ScalarProperty Name="CostId" ColumnName="CostId" />
+                <ScalarProperty Name="Cost_Type" ColumnName="Cost_Type" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Godowns">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Godown">
+              <MappingFragment StoreEntitySet="Godown">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="GodownName" ColumnName="GodownName" />
+                <ScalarProperty Name="GodownAddress" ColumnName="GodownAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Max_Qty" ColumnName="Max_Qty" />
+                <ScalarProperty Name="Min_Qty" ColumnName="Min_Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packings">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Packing">
+              <MappingFragment StoreEntitySet="Packing">
+                <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+                <ScalarProperty Name="PackingName" ColumnName="PackingName" />
+                <ScalarProperty Name="PackingFirstConversion" ColumnName="PackingFirstConversion" />
+                <ScalarProperty Name="PackingSecondConversion" ColumnName="PackingSecondConversion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonAddress" ColumnName="PersonAddress" />
+                <ScalarProperty Name="PersonContact" ColumnName="PersonContact" />
+                <ScalarProperty Name="PersonEmail" ColumnName="PersonEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plants">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Plant">
+              <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="ComapnyId" ColumnName="ComapnyId" />
+                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="PlantAddress" ColumnName="PlantAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Flammable" ColumnName="Flammable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxes">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Tax">
+              <MappingFragment StoreEntitySet="Tax">
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpCompany" FunctionName="DbBalajiProductsManagement.Store.SpCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpCompany_Result">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyContactNo" ColumnName="CompanyContactNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpCosting" FunctionName="DbBalajiProductsManagement.Store.SpCosting">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpCosting_Result">
+                <ScalarProperty Name="CostId" ColumnName="CostId" />
+                <ScalarProperty Name="Cost_Type" ColumnName="Cost_Type" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpGodown" FunctionName="DbBalajiProductsManagement.Store.SpGodown">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpGodown_Result">
+                <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="GodownName" ColumnName="GodownName" />
+                <ScalarProperty Name="GodownAddress" ColumnName="GodownAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpItem" FunctionName="DbBalajiProductsManagement.Store.SpItem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpItem_Result">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Max_Qty" ColumnName="Max_Qty" />
+                <ScalarProperty Name="Min_Qty" ColumnName="Min_Qty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpPacking" FunctionName="DbBalajiProductsManagement.Store.SpPacking">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpPacking_Result">
+                <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+                <ScalarProperty Name="PackingName" ColumnName="PackingName" />
+                <ScalarProperty Name="PackingFirstConversion" ColumnName="PackingFirstConversion" />
+                <ScalarProperty Name="PackingSecondConversion" ColumnName="PackingSecondConversion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpPerson" FunctionName="DbBalajiProductsManagement.Store.SpPerson">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpPerson_Result">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonAddress" ColumnName="PersonAddress" />
+                <ScalarProperty Name="PersonContact" ColumnName="PersonContact" />
+                <ScalarProperty Name="PersonEmail" ColumnName="PersonEmail" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpPlant" FunctionName="DbBalajiProductsManagement.Store.SpPlant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpPlant_Result">
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="ComapnyId" ColumnName="ComapnyId" />
+                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="PlantAddress" ColumnName="PlantAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpPurchaseHeader" FunctionName="DbBalajiProductsManagement.Store.SpPurchaseHeader">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpPurchaseHeader_Result">
+                <ScalarProperty Name="PurchaseHeaderId" ColumnName="PurchaseHeaderId" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpTax" FunctionName="DbBalajiProductsManagement.Store.SpTax">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpTax_Result">
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpUnit" FunctionName="DbBalajiProductsManagement.Store.SpUnit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpUnit_Result">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PurchaseLines">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.PurchaseLine">
+              <MappingFragment StoreEntitySet="PurchaseLine">
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PurchaseHeaderId" ColumnName="PurchaseHeaderId" />
+                <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpAllPurchase" FunctionName="DbBalajiProductsManagement.Store.SpAllPurchase">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpAllPurchase_Result">
+                <ScalarProperty Name="purchase_order_date" ColumnName="purchase_order_date" />
+                <ScalarProperty Name="purchase_order_number" ColumnName="purchase_order_number" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="basic_amount" ColumnName="basic_amount" />
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+                <ScalarProperty Name="taxable_amount" ColumnName="taxable_amount" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="payable_amount" ColumnName="payable_amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpDatewise" FunctionName="DbBalajiProductsManagement.Store.SpDatewise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpDatewise_Result">
+                <ScalarProperty Name="purchase_order_number" ColumnName="purchase_order_number" />
+                <ScalarProperty Name="purchase_order_date" ColumnName="purchase_order_date" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="basic_amount" ColumnName="basic_amount" />
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+                <ScalarProperty Name="taxable_amount" ColumnName="taxable_amount" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="payable_amount" ColumnName="payable_amount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpItemWiseDateWise" FunctionName="DbBalajiProductsManagement.Store.SpItemWiseDateWise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpItemWiseDateWise_Result">
+                <ScalarProperty Name="purchase_order_number" ColumnName="purchase_order_number" />
+                <ScalarProperty Name="purchase_order_date" ColumnName="purchase_order_date" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="basic_amount" ColumnName="basic_amount" />
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+                <ScalarProperty Name="taxable_amount" ColumnName="taxable_amount" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="payable_amount" ColumnName="payable_amount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpProductWiseDateWise" FunctionName="DbBalajiProductsManagement.Store.SpProductWiseDateWise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpProductWiseDateWise_Result">
+                <ScalarProperty Name="purchase_order_number" ColumnName="purchase_order_number" />
+                <ScalarProperty Name="purchase_order_date" ColumnName="purchase_order_date" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="basic_amount" ColumnName="basic_amount" />
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+                <ScalarProperty Name="taxable_amount" ColumnName="taxable_amount" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="payable_amount" ColumnName="payable_amount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpSupplierWise" FunctionName="DbBalajiProductsManagement.Store.SpSupplierWise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpSupplierWise_Result">
+                <ScalarProperty Name="purchase_order_number" ColumnName="purchase_order_number" />
+                <ScalarProperty Name="purchase_order_date" ColumnName="purchase_order_date" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="basic_amount" ColumnName="basic_amount" />
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+                <ScalarProperty Name="taxable_amount" ColumnName="taxable_amount" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="payable_amount" ColumnName="payable_amount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PersonTypes">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.PersonType">
+              <MappingFragment StoreEntitySet="PersonType">
+                <ScalarProperty Name="PersonType1" ColumnName="PersonType" />
+                <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpGetHeaderInfo" FunctionName="DbBalajiProductsManagement.Store.SpGetHeaderInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpGetHeaderInfo_Result">
+                <ScalarProperty Name="purchase_order_date" ColumnName="purchase_order_date" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonContact" ColumnName="PersonContact" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="GRNHeaders">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.GRNHeader">
+              <MappingFragment StoreEntitySet="GRNHeader">
+                <ScalarProperty Name="DCNo" ColumnName="DCNo" />
+                <ScalarProperty Name="VehicleLoadedWeight" ColumnName="VehicleLoadedWeight" />
+                <ScalarProperty Name="VehicleWeight" ColumnName="VehicleWeight" />
+                <ScalarProperty Name="VehicleNo" ColumnName="VehicleNo" />
+                <ScalarProperty Name="GRNDate" ColumnName="GRNDate" />
+                <ScalarProperty Name="PurchaseHeaderId" ColumnName="PurchaseHeaderId" />
+                <ScalarProperty Name="GRNHeaderId" ColumnName="GRNHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRNLines">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.GRNLine">
+              <MappingFragment StoreEntitySet="GRNLine">
+                <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="PORate" ColumnName="PORate" />
+                <ScalarProperty Name="FreeQty" ColumnName="FreeQty" />
+                <ScalarProperty Name="RejectedQty" ColumnName="RejectedQty" />
+                <ScalarProperty Name="AcceptedQty" ColumnName="AcceptedQty" />
+                <ScalarProperty Name="POQty" ColumnName="POQty" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="GRNHeaderId" ColumnName="GRNHeaderId" />
+                <ScalarProperty Name="GRNLineId" ColumnName="GRNLineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseHeaders">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.PurchaseHeader">
+              <MappingFragment StoreEntitySet="PurchaseHeader">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="PurchaseHeaderId" ColumnName="PurchaseHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormulationLines">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.FormulationLine">
+              <MappingFragment StoreEntitySet="FormulationLine">
+                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="FormulationHeaderId" ColumnName="FormulationHeaderId" />
+                <ScalarProperty Name="FormulationLineId" ColumnName="FormulationLineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpFormulationMax" FunctionName="DbBalajiProductsManagement.Store.SpFormulationMax" />
+          <FunctionImportMapping FunctionImportName="SpGRNLineData" FunctionName="DbBalajiProductsManagement.Store.SpGRNLineData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpGRNLineData_Result">
+                <ScalarProperty Name="PurchaseHeaderId" ColumnName="PurchaseHeaderId" />
+                <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpSupplierwiseDatewise" FunctionName="DbBalajiProductsManagement.Store.SpSupplierwiseDatewise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpSupplierwiseDatewise_Result">
+                <ScalarProperty Name="purchase_order_number" ColumnName="purchase_order_number" />
+                <ScalarProperty Name="purchase_order_date" ColumnName="purchase_order_date" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="basic_amount" ColumnName="basic_amount" />
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+                <ScalarProperty Name="taxable_amount" ColumnName="taxable_amount" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="payable_amount" ColumnName="payable_amount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ProductionLines">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.ProductionLine">
+              <MappingFragment StoreEntitySet="ProductionLine">
+                <ScalarProperty Name="GRNHeaderId" ColumnName="GRNHeaderId" />
+                <ScalarProperty Name="GRNLineId" ColumnName="GRNLineId" />
+                <ScalarProperty Name="ProductionHeaderId" ColumnName="ProductionHeaderId" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="QuantityRequired" ColumnName="QuantityRequired" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductionLineId" ColumnName="ProductionLineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpProduct" FunctionName="DbBalajiProductsManagement.Store.SpProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpProduct_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Flammable" ColumnName="Flammable" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpGetFormulationHeaderInfo" FunctionName="DbBalajiProductsManagement.Store.SpGetFormulationHeaderInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpGetFormulationHeaderInfo_Result">
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="FormulaQty" ColumnName="FormulaQty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ProductionHeaders">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.ProductionHeader">
+              <MappingFragment StoreEntitySet="ProductionHeader">
+                <ScalarProperty Name="LossQty" ColumnName="LossQty" />
+                <ScalarProperty Name="ActualQty" ColumnName="ActualQty" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+                <ScalarProperty Name="FormulationHeaderId" ColumnName="FormulationHeaderId" />
+                <ScalarProperty Name="ProductionHeaderId" ColumnName="ProductionHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpCalculateStock" FunctionName="DbBalajiProductsManagement.Store.SpCalculateStock">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpCalculateStock_Result">
+                <ScalarProperty Name="GRNLineId" ColumnName="GRNLineId" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="FormulationHeaders">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.FormulationHeader">
+              <MappingFragment StoreEntitySet="FormulationHeader">
+                <ScalarProperty Name="AcFlag" ColumnName="AcFlag" />
+                <ScalarProperty Name="attr1" ColumnName="attr1" />
+                <ScalarProperty Name="FormulaQty" ColumnName="FormulaQty" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="FormulationCode" ColumnName="FormulationCode" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="FormulationDate" ColumnName="FormulationDate" />
+                <ScalarProperty Name="FormulationName" ColumnName="FormulationName" />
+                <ScalarProperty Name="FormulationHeaderId" ColumnName="FormulationHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpProductionLineData" FunctionName="DbBalajiProductsManagement.Store.SpProductionLineData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbBalajiProductsManagement.SpProductionLineData_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="GRNLineId" ColumnName="GRNLineId" />
+                <ScalarProperty Name="GRNHeaderId" ColumnName="GRNHeaderId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="userTables">
+            <EntityTypeMapping TypeName="DbBalajiProductsManagement.userTable">
+              <MappingFragment StoreEntitySet="userTable">
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

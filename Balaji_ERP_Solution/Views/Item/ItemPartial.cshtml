@@ -1,0 +1,43 @@
+﻿@model Balaji_ERP_Solution.DataContext.Item
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <script src="~/ProjectScript/ItemValidation.js"></script>
+    <div class="form-horizontal">
+        <br />
+        <h4>Item</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                <label>Product Name</label>
+                @Html.DropDownListFor(model => model.ProductId, new SelectList(ViewBag.ProductList, "Value", "Text"), new { @class = "form-control classProductName", id = "idproductDropdown", onkeyup = "validateAndSubmitForm()" })
+                <span id="ProductNameSpan"></span>
+                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Item Name</label>
+                @Html.TextBoxFor(model => model.ItemName, new { @class = "form-control", id = "idItemName", onkeyup = "validateAndSubmitForm()" })
+                <span id="ItemNameSpan"></span>
+                @Html.ValidationMessageFor(model => model.ItemName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Max Quantity</label>
+                @Html.TextBoxFor(model => model.Max_Qty, new { @class = "form-control", id = "idMaxQty", onkeyup = "validateAndSubmitForm()" })
+                <span id="MaxQtySpan"></span>
+                @Html.ValidationMessageFor(model => model.Max_Qty, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Min Qty</label>
+                @Html.TextBoxFor(model => model.Min_Qty, new { @class = "form-control", id = "idMinQty"})
+                <span id="MinQtySpan"></span>
+                @Html.ValidationMessageFor(model => model.Min_Qty, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        </div>
+        }
+

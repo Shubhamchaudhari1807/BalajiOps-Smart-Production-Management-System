@@ -1,0 +1,38 @@
+﻿
+@model Balaji_ERP_Solution.DataContext.Tax
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <h4 class="text-center bg-success">Company</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                <label>Tax Name<span style="color:red">*</span></label>
+                @Html.DropDownListFor(model => model.TaxId, new SelectList(ViewBag.TaxList, "Value", "Text"), new { @class = "form-control", id = "idTaxName" })
+                @Html.ValidationMessageFor(model => model.TaxName, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.TaxId)
+            </div>
+
+            <div class="col-md-3">
+                <label>Tax Percentage<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.TaxPercentage, new { @class = "form-control",id="idTaxPercentage"})
+                @Html.ValidationMessageFor(model => model.TaxPercentage, "", new { @class = "text-danger" })
+            </div>
+
+          
+
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-1 text-bg-success">
+            <input type="submit" value="save record" class="btn btn-default" />
+        </div>
+    </div>
+}
+

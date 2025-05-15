@@ -1,0 +1,46 @@
+﻿@model Balaji_ERP_Solution.DataContext.FormulationHeader
+<form>
+    <div class="col-md-3">
+        <label>Formulation Name<span style="color:red">*</span></label>
+        @Html.DropDownListFor(model => model.FormulationHeaderId, new SelectList(ViewBag.FormulationList, "Value", "Text"), new { @class = "form-control", id = "idFormulationId" })
+        @Html.ValidationMessageFor(model => model.FormulationHeaderId, "", new { @class = "text-danger" })
+    </div>
+    <label>Formulation Active Deactivate</label>
+    <input type="checkbox" id="acflagCheckbox" />
+    @Html.HiddenFor(model => model.AcFlag)
+    <br />
+    <br />
+    <button type="button" id="submitbutton" onclick="DeActivateFormulation()" disabled>Submit</button>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#acflagCheckbox").change(function () {
+            toggleSubmitButton();
+        });
+    });
+
+    function toggleSubmitButton() {
+        let checkbox = $("#acflagCheckbox");
+        let submitButton = $("#submitbutton");
+        if (checkbox.prop('checked')) {
+            submitButton.prop('disabled', false);
+        } else {
+            submitButton.prop('disabled', true);
+        }
+    }
+
+    function DeActivateFormulation() {
+        var formulationId = $("#idFormulationId").val();
+        $.ajax({
+            type: "POST",
+            url: "/Formulation/FormulaUpdate",
+            data: { formulationId: formulationId },
+            success: function (data) {
+            },
+            error: function (ex) {
+                alert("Error loading items: " + ex);
+            }
+        });
+    }
+</script>

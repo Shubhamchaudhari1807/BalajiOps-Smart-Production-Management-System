@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbBalajiProductsEntity.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar(max)" />
+    <Property Name="GST" Type="nvarchar(max)" />
+    <Property Name="CompanyAddress" Type="nvarchar(max)" />
+    <Property Name="CompanyLogo" Type="nvarchar(max)" />
+    <Property Name="CompanyContactNo" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Costing">
+    <Key>
+      <PropertyRef Name="CostId" />
+    </Key>
+    <Property Name="CostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cost_Type" Type="nvarchar" MaxLength="20" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Formulation">
+    <Key>
+      <PropertyRef Name="FormulationId" />
+    </Key>
+    <Property Name="FormulationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormulationCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="FormulaQuantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PurchaseLineId" Type="int" />
+    <Property Name="FormulationHeaderId" Type="int" />
+  </EntityType>
+  <EntityType Name="FormulationHeader">
+    <Key>
+      <PropertyRef Name="FormulationHeaderId" />
+    </Key>
+    <Property Name="FormulationHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormulationName" Type="nvarchar" MaxLength="20" />
+    <Property Name="FormulationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Godown">
+    <Key>
+      <PropertyRef Name="GodownId" />
+    </Key>
+    <Property Name="GodownId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantId" Type="int" />
+    <Property Name="GodownName" Type="nvarchar" MaxLength="20" />
+    <Property Name="GodownAddress" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Max_Qty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Min_Qty" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Packing">
+    <Key>
+      <PropertyRef Name="PackingId" />
+    </Key>
+    <Property Name="PackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackingName" Type="nvarchar" MaxLength="20" />
+    <Property Name="PackingFirstConversion" Type="nvarchar" MaxLength="20" />
+    <Property Name="PackingSecondConversion" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonTypeId" Type="int" />
+    <Property Name="PersonName" Type="nvarchar" MaxLength="20" />
+    <Property Name="PersonAddress" Type="nvarchar" MaxLength="30" />
+    <Property Name="PersonContact" Type="nvarchar" MaxLength="20" />
+    <Property Name="PersonEmail" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Plant">
+    <Key>
+      <PropertyRef Name="PlantId" />
+    </Key>
+    <Property Name="PlantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ComapnyId" Type="int" />
+    <Property Name="PlantName" Type="nvarchar" MaxLength="30" />
+    <Property Name="Capacity" Type="nvarchar" MaxLength="20" />
+    <Property Name="PlantAddress" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Flammable" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Production">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+    </Key>
+    <Property Name="ProductionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="Production_Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PurchaseLineId" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductionHeader">
+    <Key>
+      <PropertyRef Name="ProductionHeaderId" />
+    </Key>
+    <Property Name="ProductionHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ProductionId" Type="int" />
+    <Property Name="ProductionDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PurchaseHeader">
+    <Key>
+      <PropertyRef Name="PurchaseHeaderId" />
+    </Key>
+    <Property Name="PurchaseHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchaseDate" Type="date" />
+    <Property Name="PersonId" Type="int" />
+    <Property Name="BasicAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TaxAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PlantId" Type="int" />
+    <Property Name="GodownId" Type="int" />
+    <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PurchaseLine">
+    <Key>
+      <PropertyRef Name="PurchaseLineId" />
+    </Key>
+    <Property Name="PurchaseLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchaseHeaderId" Type="int" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="TaxId" Type="int" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnitId" Type="int" />
+    <Property Name="PackingId" Type="int" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="DiscountOnAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountOnItem" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FreeQuantity" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="TaxId" />
+    </Key>
+    <Property Name="TaxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaxName" Type="nvarchar" MaxLength="20" />
+    <Property Name="TaxPercentage" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="UnitId" />
+    </Key>
+    <Property Name="UnitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Function Name="SpCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DbBalajiProductsEntityStoreContainer">
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Costing" EntityType="Self.Costing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Formulation" EntityType="Self.Formulation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormulationHeader" EntityType="Self.FormulationHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Godown" EntityType="Self.Godown" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Packing" EntityType="Self.Packing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Production" EntityType="Self.Production" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductionHeader" EntityType="Self.ProductionHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseHeader" EntityType="Self.PurchaseHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseLine" EntityType="Self.PurchaseLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

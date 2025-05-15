@@ -1,0 +1,45 @@
+﻿@model Balaji_ERP_Solution.DataContext.Plant
+<script src="~/ProjectScript/PlantValidation.js"></script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Plant Master</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                <label>Comapny Name<span style="color:red">*</span></label>
+                @*@Html.DropDownListFor(model => model.ComapnyId, new SelectList(ViewBag.CompanyList, "Value", "Text"), new {@class="form-control"})*@
+                @*@Html.DropDownListFor(model => model.ComapnyId, new SelectList(new List<SelectListItem> { new SelectListItem { Text = Model.CompanyName, Value = Model.ComapnyId.ToString() } }, "Value", "Text"), new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.ComapnyId, new SelectList(ViewBag.CompanyList, "Value", "Text"), new { @class = "form-control", id = "companyDropdown" })
+                <span id="CompanyNameSpan"></span>
+                @Html.HiddenFor(model => model.PlantId)
+                @Html.ValidationMessageFor(model => model.ComapnyId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                <label>Plant Name<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.PlantName, new { @class = "form-control", id = "idPlantName" })
+                <span id="PlantNameSpan"></span>
+                @Html.ValidationMessageFor(model => model.PlantName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Capacity<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.Capacity, new { @class = "form-control", id = "idCapacity" })
+                <span id="CapacitySpan"></span>
+                @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Address<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.PlantAddress, new { @class = "form-control",id= "idAddress" })
+                <span id="AddressSpan"></span>
+                @Html.ValidationMessageFor(model => model.PlantAddress, "", new { @class = "text-danger" })
+            </div>
+
+          
+        </div>
+    </div>
+}
+

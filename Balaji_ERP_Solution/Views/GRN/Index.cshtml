@@ -1,0 +1,14 @@
+﻿@model Balaji_ERP_Solution.Models.GRNHeaderLine
+
+@using (Html.BeginForm("SaveOrUpdate", "GRN", FormMethod.Post))
+{
+    @Html.Partial("~/Views/GRN/GRNHeaderPartial.cshtml", Model.gRNHeader)
+
+    @Html.Partial("~/Views/GRN/GRNLinePartial.cshtml", Model.gRNLines)
+    <br />
+    <button type="submit">Save Record</button>
+    <br />
+}
+<br />
+
+

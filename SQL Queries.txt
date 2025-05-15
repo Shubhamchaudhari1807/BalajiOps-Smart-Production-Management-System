@@ -1,0 +1,31 @@
+Select CONVERT (nvarchar(20),purchase_date,103) as [purchase_order_date] from mt_purchase_header   ---- [purchase_order_date] on this formate-13/03/2024
+
+Select CAST (19.00*19.00 as decimal (18,2)) ----All amounts are 2 decimal fraction-361.00
+
+
+
+----1)All Purchase Report----&
+----6)Datewise Report----
+
+Select 
+CONVERT (nvarchar(20),header.purchase_date,103) as [purchase_order_date],
+header.purchase_header_id as [purchase_order_number],
+p.product_name, i.item_name, person.person_name, t.tax_name,
+(ISNULL(line.quantity,0) *ISNULL(line.rate,0)) as [basic_amount],
+CAST((ISNULL (line.quantity,0) * ISNULL(line.rate,0)) * (line.discount_percentage)/100 as decimal(18,2)) as [discount_amount],
+CAST((ISNULL(line.quantity,0) *ISNULL(line.rate,0))-(ISNULL (line.quantity,0) * ISNULL(line.rate,0)) * (line.discount_percentage)/100 as decimal(18,2)) as [taxable_amount],
+CAST((ISNULL(line.quantity,0) *ISNULL (line.rate,0)-(((ISNULL (line.quantity,0) *ISNULL (line.rate,0)) * line.discount_percentage)/100) *ISNULL (t.tax_percent,0)/100) as decimal (18,2)) as [tax_amount],
+CAST((ISNULL(line.quantity,0) *ISNULL( line.rate,0) - ((ISNULL(line.quantity,0) *ISNULL( line.rate,0) *(line.discount_percentage)/100) + ISNULL( line.quantity,0) * ISNULL(line.rate,0) - ((ISNULL (line.quantity,0) *ISNULL (line.rate,0)) * line.discount_percentage)/100) *ISNULL (t.tax_percent,0)/100) as decimal (18,2)) as [payable_amount]
+
+from mt_purchase_line line
+inner join mt_purchase_header header
+on header.purchase_header_id = line.purchase_header_id
+inner join t_item i on line.item_id = i.item_id
+inner join t_product p on i.product_id = p.product_id
+inner join t_person person on header.person_id = person.person_id
+inner join t_tax t on line.tax_id = t.tax_id
+
+
+
+
+

@@ -1,0 +1,263 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.PurchaseLine>
+@{
+    int i;
+}
+<head>
+    <script>
+        function DeleteRow() {
+            var table = document.getElementById("Pline");
+            var rowCount = table.rows.length;
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+            }
+            HeaderPayableAmount()
+            CalculateHeaderDiscount()
+            CalculalteHedarBasic()
+            HeaderTaxAmount()
+        }
+        function Addrow() {
+            var row = '<tr>' +
+                '<td></td>' +               
+                '<td>@Html.Raw(Ajax.JavaScriptStringEncode(Html.DropDownList("item.ProductId", new SelectList(ViewBag.ProductList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classProduct", id = "ProductId", OnChange = "LoadItem(this)" }).ToHtmlString()))</td>' +
+                '<td> <select id="ItemId" name="ItemId" class="form-control form-control-sm sm-2 classddlItem" onchange="GetItemId(this)"></select> @*@Html.Hidden("ItemId",new { @class ="form-control form-control-sm sm-2 classGetItem", id = "idGetItem" })*@</td > '+
+                '<td>@Html.Raw(Ajax.JavaScriptStringEncode(Html.DropDownList("item.PackingId", new SelectList(ViewBag.PackingList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classPacking", id = "PackingId"}).ToHtmlString()))</td>' +
+                '<td>@Html.Raw(Ajax.JavaScriptStringEncode(Html.DropDownList("item.UnitId", new SelectList(ViewBag.UnitList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classUnit", id = "UnitId" }).ToHtmlString()))</td>' +
+                '<td>@Html.TextBox("item.Quantity", "", new { @class = "form-control form-control-sm sm-2 classQuantity", id = "idQuantity", OnChange = "RawBasicAmount(this)"}) </td>' +
+                '<td>@Html.TextBox("item.Rate", "", new {@class="form-control form-control-sm sm-2 classRate",id="idRate", OnChange = "RawBasicAmount(this)" })</td>' +
+                '<td>@Html.TextBox("item.BasicAmount", "", new {@class="form-control form-control-sm sm-2 classBasicAmount",id="idBasicAmount",@readonly = "readonly", OnChange = "TaxableAmount(this)" })</td>' +
+                '<td>@Html.TextBox("item.DiscountPercentage", "", new { @class = "form-control form-control-sm sm-2 classDiscountPercent", id = "idDiscountPercentage", OnChange = "Discount(this),CalculateHeaderDiscount()" })</td>' +
+                '<td>@Html.TextBox("item.DiscountAmount", "", new { @class = "form-control form-control-sm sm-2 classDiscount", id = "idDiscount", @readonly = "readonly", OnChange = "TaxableAmount(this)", Onblur = "TaxableAmount(this)" })</td>' +
+                '<td>@Html.TextBox("item.TaxableAmount", "", new { @class = "form-control form-control-sm sm-2 classTaxableAmount", id = "idTaxableAmount", @readonly = "readonly" })</td>'+
+                '<td>@Html.Raw(Ajax.JavaScriptStringEncode(Html.DropDownList("item.TaxId", new SelectList(ViewBag.TaxList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classTaxPercent", id = "TaxPercent", OnChange = "GetTaxPercentage(this)", OnClick = "PayableAmount(this)" }).ToHtmlString()))</td>' +
+                '<td>@Html.TextBox("item.TaxAmount", "", new { @class = "form-control form-control-sm sm-2 classTaxAmount",id="idTaxAmount", OnChange = "PayableAmount(this)", Onblur = "PayableAmount(this)" })</td>' +
+                '<td>@Html.TextBox("item.PayableAmount", "", new { @class = "form-control form-control-sm sm-2 classPayableAmount",id="idPayableAmount"})</td>'+
+                + '</tr>'
+            $("#Pline").append(row)
+        }
+    </script>
+</head>
+<div class="card-header bg-dark">
+    <h5>
+        <span style="float:right">
+            <a style="color:black;" OnClick="Addrow()">
+                <span class="fa fa-plus" style="color:none"></span>
+
+            </a>
+            <a style="color: black;" OnClick="DeleteRow()">
+                <span class="fa fa-minus" style="color:none"></span>
+
+            </a>
+        </span>
+    </h5>
+</div>
+
+<div class="table-responsive" style="overflow-x:scroll;overflow-y:auto;width:100%;max-height:350px">
+    <table class="table table-bordered">
+        <tr>
+            <th class="form-control-sm sm-2">Sr</th>
+            <th class="form-control-sm sm-2">Product Name</th>
+            <th class="form-control-sm sm-2">Item Name</th>
+            <th class="form-control-sm sm-2">Packing Name</th>
+            <th class="form-control-sm sm-2">Unit Name</th>
+            <th class="form-control-sm sm-2">Quantity</th>
+            <th class="form-control-sm sm-2">Rate</th>
+            <th class="form-control-sm sm-2">Basic Amount</th>
+            <th class="form-control-sm sm-2">Discount%</th>
+            <th class="form-control-sm sm-2">Discount Amount</th>
+            <th class="form-control-sm sm-2">Taxable Amount</th>
+            <th class="form-control-sm sm-2">Tax%</th>
+            <th class="form-control-sm sm-2">Tax Amount</th>
+            <th class="form-control-sm sm-2">Payable Amount</th>
+        </tr>
+        <tbody id="Pline">
+            @for (i = 1; i <= 1; i++)
+            {
+                <tr>
+                    <td>1</td>
+                    <td>@Html.DropDownList("item.ProductId", new SelectList(ViewBag.ProductList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classProduct", id = "ProductId", OnChange = "LoadItem(this),PurchaseLineValidation()" })</td>
+                    <td>
+                        <select id="ItemId" name="ItemId" class="form-control form-control-sm sm-2 classddlItem" onchange="GetItemId(this),PurchaseLineValidation()"></select>
+                        @*@Html.Hidden("ItemId",new { @class ="form-control form-control-sm sm-2 classGetItem", id = "idGetItem" })*@
+                    </td>
+                    <td>@Html.DropDownList("item.PackingId", new SelectList(ViewBag.PackingList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classPacking", id = "PackingId",OnChange= "PurchaseLineValidation()"})</td>
+                    <td>@Html.DropDownList("item.UnitId", new SelectList(ViewBag.UnitList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classUnit", id = "UnitId", OnChange = "PurchaseLineValidation()" })</td>
+                    <td>@Html.TextBox("item.Quantity","", new { @class = "form-control form-control-sm sm-2 classQuantity", id = "idQuantity", onchange = "RawBasicAmount(this),PurchaseLineValidation()" })</td>
+                    <td>@Html.TextBox("item.Rate","", new { @class = "form-control form-control-sm sm-2 classRate", id = "idRate", onchange = "RawBasicAmount(this),PurchaseLineValidation()" })</td>
+                    <td>@Html.TextBox("item.BasicAmount","", new { @class = "form-control form-control-sm sm-2 classBasicAmount", id = "idBasicAmount", @readonly = "readonly", OnChange = "TaxableAmount(this),PurchaseLineValidation()", Onblur = "TaxableAmount(this)" })</td>
+                    <td>@Html.TextBox("item.DiscountPercentage","",new { @class = "form-control form-control-sm sm-2 classDiscountPercent", id = "idDiscountPercentage", OnChange = "Discount(this),CalculateHeaderDiscount(),PurchaseLineValidation()" })</td>
+                    <td>
+                        @Html.TextBox("item.DiscountAmount","",new { @class = "form-control form-control-sm sm-2 classDiscount", id = "idDiscount", @readonly = "readonly", OnChange = "TaxableAmount(this),PurchaseLineValidation()", Onblur = "TaxableAmount(this)" })
+                    </td>
+                    <td>@Html.TextBox("item.TaxableAmount","",new { @class = "form-control form-control-sm sm-2 classTaxableAmount", id = "idTaxableAmount", @readonly = "readonly" })</td>
+                    <td>
+                        @Html.DropDownList("item.TaxId",new SelectList(ViewBag.TaxList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classTaxPercent", id = "idTaxPercent", OnChange = "GetTaxPercentage(this)",OnClick= "PayableAmount(this)" })
+                    </td>
+                    <td>@Html.TextBox("item.TaxAmount","",new { @class = "form-control form-control-sm sm-2 classTaxAmount", id = "idTaxAmount", OnChange = "PayableAmount(this)", Onblur = "PayableAmount(this)" })</td>
+                    <td>@Html.TextBox("item.PayableAmount","",new { @class = "form-control form-control-sm sm-2 classPayableAmount", id = "idPayableAmount" })</td>
+                </tr>
+            }
+        </tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+                <td>@Html.DropDownListFor(model => item.ProductId, new SelectList(ViewBag.ProductList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classProduct", id = "ProductId", onchange = "LoadItem(this)" })</td>
+                <td>
+                    <select id="ddlItem" class="form-control form-control-sm sm-2 classddlItem" OnChange="GetItemId(this)"></select>@Html.Hidden("item.ItemId", new { @class = "form-control form-control-sm sm-2 classGetItem", id = "idGetItem" })
+                </td>
+                <td>@Html.DropDownListFor(model => item.PackingId, new SelectList(ViewBag.PackingList, "Value", "Text"), new { @class = "form-control classpackingid", id = "PackingId" })</td>
+                <td>@Html.DropDownListFor(model => item.UnitId, new SelectList(ViewBag.UnitList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classUnit", id = "UnitId" })</td>
+                <td>@Html.TextBoxFor(model => item.Quantity, new { @class = "form-control form-control-sm sm-2 classQuantity", id = "idQuantity", OnChange = "RawBasicAmount()",Onblur = "PayableAmount(this)" })</td>
+                <td>@Html.TextBoxFor(model => item.Rate, new { @class = "form-control form-control-sm sm-2 classRate", id = "idRate", OnChange = "RawBasicAmount()", Onblur = "PayableAmount(this)",})</td>
+                <td>@Html.TextBoxFor(model => item.BasicAmount, new { @class = "form-control form-control-sm sm-2 classBasicAmount", id = "idBasicAmount", @readonly = "readonly" })</td>
+                <td>@Html.TextBoxFor(model => item.DiscountPercentage, new { @class = "form-control form-control-sm sm-2 classDiscountPercent", id = "idDiscount", OnChange = "Discount(this),CalculateHeaderDiscount()" })</td>
+                <td>@Html.TextBoxFor(model => item.DiscountAmount, new { @class = "form-control form-control-sm sm-2 classDiscount", id = "idDiscountPercentage",OnChange = "TaxableAmount(this)", Onblur = "TaxableAmount(this)" })</td>
+                <td>@Html.TextBoxFor(model => item.TaxableAmount, new { @class = "form-control form-control-sm sm-2 classTaxableAmount", id = "idTaxableAmount", @readonly = "readonly" })</td>
+                <td>
+                    @Html.DropDownListFor(model => item.TaxId, new SelectList(ViewBag.TaxList, "Value", "Text"), new { @class = "form-control form-control-sm sm-2 classTaxPercent", id = "idTaxPercent", OnChange= "GetTaxPercentage(this)", OnClick = "PayableAmount(this)" })
+                </td>
+                <td>@Html.TextBoxFor(model => item.TaxAmount, new {@class="form-control form-control-sm sm-2 classTaxAmount",id="idTaxAmount", OnChange = "PayableAmount(this)", Onblur = "PayableAmount(this)" })</td>
+                <td>@Html.TextBoxFor(model => item.PayableAmount, new { @class = "form-control form-control-sm sm-2 classPayableAmount", id = "idPayableAmount" })</td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="col-md-offset-2 col-md-3">
+    <br />
+    @*<input type="submit" value="Save Record" class="btn btn-danger" />*@
+</div>
+
+<script>
+   
+    function LoadItem(str) {
+        tr = $(str).closest("tr")       
+        var productId = tr.find('.classProduct').val()
+        $.ajax({
+            type: "POST",
+            url: "/Purchase/GetItem",
+            data: { productId: productId },
+            success: function (data) {
+                var classddlItem = tr.find('.classddlItem')
+                classddlItem.empty()
+                $.each(data, function (index, data) {
+                    classddlItem.append($('<option/>', {
+                        value: data.Value,
+                        text: data.Text,
+                    }));
+                    console.log(data.Value + data.Text)
+                });
+            },
+            error: function (ex) {
+                alert("Error loading items: " + ex);
+            }
+        });
+    }
+    
+    function GetItemId(str) {
+        tr = $(str).closest("tr")
+        let itemid = tr.find(".classddlItem").val()
+        tr.find(".classGetItem").val(itemid)
+    }
+    function RawBasicAmount(str) {     
+        tr = $(str).closest("tr")
+        let item_price = tr.find(".classRate").val();
+        let item_qty = tr.find(".classQuantity").val();
+        let amount = parseFloat(item_price * item_qty)
+        tr.find(".classBasicAmount").val(amount.toFixed(2));
+        
+        CalculalteHedarBasic()
+            
+    }
+    function CalculalteHedarBasic() {
+        let BasicSum = 0;
+        $(".classBasicAmount").each(function () {
+            if (!isNaN(this.value) && this.value.length != 0) {
+                BasicSum += parseFloat(this.value)
+            }
+        })
+        $(".classHeaderBasicAmount").val(BasicSum);
+    }
+    function Discount(str) {
+        tr = $(str).closest("tr")
+        let DiscountPercent = tr.find(".classDiscountPercent").val();
+        let RawBasic = tr.find(".classBasicAmount").val();
+        let DiscountAmount = (DiscountPercent * RawBasic) / 100
+        tr.find(".classDiscount").val(DiscountAmount.toFixed(2));      
+    }
+    function CalculateHeaderDiscount() {
+        let DiscountSum = 0;
+        $(".classDiscount").each(function () {
+            if (!isNaN(this.value) && this.value.length != 0) {
+                DiscountSum += parseFloat(this.value)
+            }
+        })
+        $(".classHeaderDiscountAmount").val(DiscountSum);
+    }
+    function TaxableAmount(str) {
+        console.log("Hi")
+        tr = $(str).closest("tr")
+        let RawBasic = tr.find(".classBasicAmount").val();
+        let Discount = tr.find(".classDiscount").val();
+        let TaxableAmountValue = (RawBasic - Discount)
+        tr.find(".classTaxableAmount").val(TaxableAmountValue.toFixed(2));
+    }
+    function GetTaxPercentage(str) {
+        console.log("Hi")
+        tr = $(str).closest("tr")
+        let TaxId = tr.find(".classTaxPercent").val();
+        $.getJSON('/Purchase/GetTaxPercentage',{ TaxId, TaxId },
+            function (data) {
+                var percentage = data.taxpercent;
+                let TaxableAmount = tr.find(".classTaxableAmount").val();
+                let TaxAmount = (TaxableAmount * percentage) / 100
+                tr.find(".classTaxAmount").val(TaxAmount.toFixed(2));  
+                HeaderTaxAmount()
+            })
+    }
+    function HeaderTaxAmount() {
+        let TaxSum = 0;
+        $(".classTaxAmount").each(function () {
+            if (!isNaN(this.value) && this.value.length != 0) {
+                TaxSum += parseFloat(this.value)
+            }
+        })
+        $(".classHeaderTaxAmount").val(TaxSum);
+    }
+    function PayableAmount(str) {
+        console.log("Hi")
+        tr=$(str).closest("tr")
+        var TaxableAmount = parseFloat(tr.find(".classTaxableAmount").val());
+        var TaxAmount = parseFloat(tr.find(".classTaxAmount").val());
+        let Totalamount = (TaxableAmount+TaxAmount)       
+        tr.find(".classPayableAmount").val(Totalamount);     
+        HeaderPayableAmount()
+    }
+    function HeaderPayableAmount()
+    {
+        let PayableSum = 0;
+        $(".classPayableAmount").each(function () {
+            if (!isNaN(this.value) && this.value.length != 0) {
+                PayableSum += parseFloat(this.value)
+            }
+        })
+        $(".classHeaderPayableAmount").val(PayableSum.toFixed(2));
+    }
+    $(document).ready(function () {
+        $('#idSaveRecord').click(function () {
+        });
+    });
+    function PurchaseLineValidation() {
+        console.log("Hi");
+        var component = $('.classProduct, .classddlItem, .classPacking, .classUnit, .classQuantity, .classRate, .classBasicAmount, .classDiscountPercent, .classDiscount, .classTaxableAmount, .classTaxPercent, .classTaxAmount, .classPayableAmount');
+        component.each(function () {
+            if ($(this).val() == "" || $(this).val() == null || $(this).val() == undefined || $(this).val() == "0") {
+                $(this).css("border-color", "red");
+            } else {
+                $(this).css("border-color", "");
+            }
+        });
+    }
+
+</script>

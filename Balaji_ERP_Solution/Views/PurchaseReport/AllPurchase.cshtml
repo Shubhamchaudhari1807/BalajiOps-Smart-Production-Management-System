@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.SpAllPurchase_Result>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th class="form-control-sm sm-2">Purchase Order Date</th>
+        <th class="form-control-sm sm-2">Purchase Order Number</th>
+        <th class="form-control-sm sm-2">
+           Product Name
+        </th>
+        <th class="form-control-sm sm-2">
+            Item Name
+        </th>
+        <th class="form-control-sm sm-2">
+            Person Name
+        </th>
+        <th class="form-control-sm sm-2">
+            Tax Name
+        </th>
+        <th class="form-control-sm sm-2">
+            Quantity
+        </th>
+        <th class="form-control-sm sm-2">
+            Rate
+        </th>
+        <th class="form-control-sm sm-2">
+            Basic Amount
+        </th>
+        <th class="form-control-sm sm-2">
+            Discount Amount
+        </th>
+        <th class="form-control-sm sm-2">
+            Taxable Amount
+        </th>
+        <th class="form-control-sm sm-2">
+            Tax Amount
+        </th>
+        <th class="form-control-sm sm-2">
+            Payable Amount
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.purchase_order_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.purchase_order_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.basic_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taxable_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payable_amount)
+            </td>
+
+        </tr>
+    }
+
+</table>

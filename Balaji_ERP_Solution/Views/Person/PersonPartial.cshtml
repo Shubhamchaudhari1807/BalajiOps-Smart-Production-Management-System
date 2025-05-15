@@ -1,0 +1,62 @@
+﻿@model Balaji_ERP_Solution.DataContext.Person
+@{
+    ViewBag.Title = "PersonPartial";
+}
+
+<h2>PersonPartial</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+      
+<div class="form-horizontal">
+    <h4>Person</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="row">
+    <div class="col-md-3">
+        <label>Person Type</label>
+        @Html.DropDownListFor(model => model.PersonTypeId, new SelectList(
+            new List<Object>{
+                new { value = 1 , text = "Customer" },
+                new { value = 2 , text = "Supplier" }
+            },
+            "value",
+            "text"
+        ), "Select Person Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PersonTypeId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-md-3">
+        <label>Person Name</label>
+        @Html.TextBoxFor(model => model.PersonName,new { @class = "form-control" } )
+        @Html.ValidationMessageFor(model => model.PersonName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-md-3">
+        <label>Person Address</label>
+        @Html.TextBoxFor(model => model.PersonAddress,new { @class = "form-control" } )
+        @Html.ValidationMessageFor(model => model.PersonAddress, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-md-3">
+        <lable>Person Contact</lable>
+        @Html.TextBoxFor(model => model.PersonContact,new { @class = "form-control" } )
+        @Html.ValidationMessageFor(model => model.PersonContact, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-md-3">
+        <label>Person Email</label>
+        @Html.TextBoxFor(model => model.PersonEmail, new { @class = "form-control" } )
+        @Html.ValidationMessageFor(model => model.PersonEmail, "", new { @class = "text-danger" })
+    </div>
+</div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+

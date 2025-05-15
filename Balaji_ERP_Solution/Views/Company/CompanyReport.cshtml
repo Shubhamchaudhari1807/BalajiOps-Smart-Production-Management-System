@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.SpCompany_Result>
+@{ 
+    Layout = null;
+}
+<table class="table table-bordered">
+    <tr>      
+        <th>
+            Company Name
+        </th>
+        <th>
+            GST
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Contact No
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.CompanyName)
+                @Html.HiddenFor(model => item.CompanyId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.GST)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CompanyAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CompanyContactNo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "GetDataById", new { id = item.CompanyId })|
+                @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId })
+            </td>
+        </tr>
+    }
+</table>

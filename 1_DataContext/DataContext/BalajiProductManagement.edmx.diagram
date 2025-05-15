@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01c24cd429b74cc4b01e36589ed183d2" Name="Diagram1" ZoomLevel="58">
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Company" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Costing" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Godown" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Item" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Packing" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Person" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Plant" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Product" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Production" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.ProductionHeader" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Tax" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.Unit" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.PurchaseLine" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.PersonType" Width="1.5" PointX="9.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.GRNHeader" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.GRNLine" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.PurchaseHeader" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.FormulationHeader" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DbBalajiProductsManagement.FormulationLine" Width="1.5" PointX="0.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

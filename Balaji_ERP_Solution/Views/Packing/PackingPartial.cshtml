@@ -1,0 +1,46 @@
+﻿@model Balaji_ERP_Solution.DataContext.Packing
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <h4 class="text-center bg-success">Packing</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                <label>Packing Name<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.PackingName, new { @class = "form-control", id = "PackingName" })
+                <span id="PackingNameSpan"></span>
+                @Html.ValidationMessageFor(model => model.PackingName, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.PackingId)
+            </div>
+
+            <div class="col-md-3">
+                <label>Packing First Conversion<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.PackingFirstConversion, new { @class = "form-control", id = "GST" })
+                <span id="GSTSpan"></span>
+
+                @Html.ValidationMessageFor(model => model.PackingFirstConversion, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Packing Second Conversion<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.PackingSecondConversion, new { @class = "form-control", id = "PackingAddress" })
+                <span id="GSTSpan"></span>
+                @Html.ValidationMessageFor(model => model.PackingSecondConversion, "", new { @class = "text-danger" })
+            </div>
+
+            
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+            <input type="submit" value="Save Record" class="btn btn-default" />
+        </div>
+    </div>
+}
+

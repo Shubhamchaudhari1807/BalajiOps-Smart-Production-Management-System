@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbBalajiProductsManagementModelStoreContainer" CdmEntityContainer="DbBalajiProductsManagementEntities">
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="GST" ColumnName="GST" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="CompanyContactNo" ColumnName="CompanyContactNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Costings">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Costing">
+        <MappingFragment StoreEntitySet="Costing">
+          <ScalarProperty Name="CostId" ColumnName="CostId" />
+          <ScalarProperty Name="Cost_Type" ColumnName="Cost_Type" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Formulations">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Formulation">
+        <MappingFragment StoreEntitySet="Formulation">
+          <ScalarProperty Name="FormulationId" ColumnName="FormulationId" />
+          <ScalarProperty Name="FormulationCode" ColumnName="FormulationCode" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="FormulaQuantity" ColumnName="FormulaQuantity" />
+          <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+          <ScalarProperty Name="FormulationHeaderId" ColumnName="FormulationHeaderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormulationHeaders">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.FormulationHeader">
+        <MappingFragment StoreEntitySet="FormulationHeader">
+          <ScalarProperty Name="FormulationHeaderId" ColumnName="FormulationHeaderId" />
+          <ScalarProperty Name="FormulationName" ColumnName="FormulationName" />
+          <ScalarProperty Name="FormulationDate" ColumnName="FormulationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Godowns">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Godown">
+        <MappingFragment StoreEntitySet="Godown">
+          <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+          <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+          <ScalarProperty Name="GodownName" ColumnName="GodownName" />
+          <ScalarProperty Name="GodownAddress" ColumnName="GodownAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="Max_Qty" ColumnName="Max_Qty" />
+          <ScalarProperty Name="Min_Qty" ColumnName="Min_Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packings">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Packing">
+        <MappingFragment StoreEntitySet="Packing">
+          <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+          <ScalarProperty Name="PackingName" ColumnName="PackingName" />
+          <ScalarProperty Name="PackingFirstConversion" ColumnName="PackingFirstConversion" />
+          <ScalarProperty Name="PackingSecondConversion" ColumnName="PackingSecondConversion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+          <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+          <ScalarProperty Name="PersonAddress" ColumnName="PersonAddress" />
+          <ScalarProperty Name="PersonContact" ColumnName="PersonContact" />
+          <ScalarProperty Name="PersonEmail" ColumnName="PersonEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plants">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Plant">
+        <MappingFragment StoreEntitySet="Plant">
+          <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+          <ScalarProperty Name="ComapnyId" ColumnName="ComapnyId" />
+          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="PlantAddress" ColumnName="PlantAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Flammable" ColumnName="Flammable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productions">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Production">
+        <MappingFragment StoreEntitySet="Production">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="Production_Quantity" ColumnName="Production_Quantity" />
+          <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductionHeaders">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.ProductionHeader">
+        <MappingFragment StoreEntitySet="ProductionHeader">
+          <ScalarProperty Name="ProductionHeaderId" ColumnName="ProductionHeaderId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseHeaders">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.PurchaseHeader">
+        <MappingFragment StoreEntitySet="PurchaseHeader">
+          <ScalarProperty Name="PurchaseHeaderId" ColumnName="PurchaseHeaderId" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+          <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseLines">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.PurchaseLine">
+        <MappingFragment StoreEntitySet="PurchaseLine">
+          <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+          <ScalarProperty Name="PurchaseHeaderId" ColumnName="PurchaseHeaderId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+          <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DiscountOnAmount" ColumnName="DiscountOnAmount" />
+          <ScalarProperty Name="DiscountOnItem" ColumnName="DiscountOnItem" />
+          <ScalarProperty Name="FreeQuantity" ColumnName="FreeQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Tax">
+        <MappingFragment StoreEntitySet="Tax">
+          <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+          <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+          <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="DbBalajiProductsManagementModel.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_cost" FunctionName="DbBalajiProductsManagementModel.Store.sp_cost">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbBalajiProductsManagementModel.sp_cost_Result">
+          <ScalarProperty Name="CostId" ColumnName="CostId" />
+          <ScalarProperty Name="Cost_Type" ColumnName="Cost_Type" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpCompany" FunctionName="DbBalajiProductsManagementModel.Store.SpCompany">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbBalajiProductsManagementModel.SpCompany_Result">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="GST" ColumnName="GST" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="CompanyContactNo" ColumnName="CompanyContactNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpGodown" FunctionName="DbBalajiProductsManagementModel.Store.SpGodown">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbBalajiProductsManagementModel.SpGodown_Result">
+          <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+          <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+          <ScalarProperty Name="GodownName" ColumnName="GodownName" />
+          <ScalarProperty Name="GodownAddress" ColumnName="GodownAddress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpFormulation" FunctionName="DbBalajiProductsManagementModel.Store.SpFormulation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbBalajiProductsManagementModel.SpFormulation_Result">
+          <ScalarProperty Name="FormulationId" ColumnName="FormulationId" />
+          <ScalarProperty Name="FormulationCode" ColumnName="FormulationCode" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="FormulaQuantity" ColumnName="FormulaQuantity" />
+          <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+          <ScalarProperty Name="FormulationHeaderId" ColumnName="FormulationHeaderId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

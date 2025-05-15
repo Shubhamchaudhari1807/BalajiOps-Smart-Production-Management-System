@@ -1,0 +1,29 @@
+﻿@model Balaji_ERP_Solution.DataContext.Unit
+
+@using (Html.BeginForm("SaveOrUpdate", "Unit", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Unit Master</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                <label>Unit Name<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.UnitName, new { @class = "form-control",id="idUnitName"})
+                @*@Html.DropDownListFor(model => model.ComapnyId, new SelectList(ViewBag.CompanyList, "Value", "Text"), new {@class="form-control"})*@
+                @*@Html.DropDownListFor(model => model.ComapnyId, new SelectList(new List<SelectListItem> { new SelectListItem { Text = Model.CompanyName, Value = Model.ComapnyId.ToString() } }, "Value", "Text"), new { @class = "form-control" })*@
+                @*@Html.DropDownListFor(model => model.ComapnyId, new SelectList(ViewBag.CompanyList, "Value", "Text"), new { @class = "form-control", id = "companyDropdown" })*@
+                @Html.HiddenFor(model => model.UnitId)
+                @Html.ValidationMessageFor(model => model.UnitId, "", new { @class = "text-danger" })
+            </div>
+            
+
+            <div class="col-md-offset-2 col-md-3">
+                <br />
+                <input type="submit" value="Save Record" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+

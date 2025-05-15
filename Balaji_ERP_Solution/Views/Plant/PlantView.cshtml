@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "PlantView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("SaveOrUpdate", "Plant", FormMethod.Post, new { id = "plantForm" }))
+{
+    @Html.Partial("~/Views/Plant/PlantPartial.cshtml")
+    <button type="button" onclick="validateAndSubmitForm()">Save Record</button>
+}
+@Html.Action("PlantReport")

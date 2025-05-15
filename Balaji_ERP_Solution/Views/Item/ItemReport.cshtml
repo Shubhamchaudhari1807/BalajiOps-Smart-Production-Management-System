@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.SpItem_Result>
+
+@{ 
+    Layout = null;
+}
+<table class="table">
+    <tr>     
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Max_Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Min_Qty)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+            @Html.HiddenFor(modelItem=>item.ItemId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Max_Qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Min_Qty)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemId}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemId})
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0DF9F2DD-B04E-4468-B1EA-700109FFA75B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Balaji_ERP_Solution</RootNamespace>
+    <AssemblyName>Balaji_ERP_Solution</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.17.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.17\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\FormulationController.cs" />
+    <Compile Include="Controllers\FormulationReportController.cs" />
+    <Compile Include="Controllers\GodownController.cs" />
+    <Compile Include="Controllers\GRNController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PackingController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PlantController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductionController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\PurchaseReportController.cs" />
+    <Compile Include="Controllers\TaxController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="DataContext\BalajiProductManagement.Context.cs">
+      <DependentUpon>BalajiProductManagement.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DataContext\BalajiProductManagement.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DataContext\BalajiProductManagement.Designer.cs">
+      <DependentUpon>BalajiProductManagement.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DataContext\Company.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Costing.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\FormulationHeader.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\FormulationLine.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Godown.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\GRNHeader.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\GRNLine.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Item.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Packing.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Person.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\PersonType.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Plant.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Product.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ProductionHeader.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ProductionLine.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\PurchaseHeader.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\PurchaseLine.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpAllPurchase_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpCalculateStock_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpCompany_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpCosting_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpDatewise_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpFormulationReport_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpGetFormulationHeaderInfo_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpGetHeaderInfo_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpGodown_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpGRNLineData_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpItemWiseDateWise_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpItem_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpPacking_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpPerson_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpPlant_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpProductionLineData_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpProductWiseDateWise_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpProduct_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpPurchaseHeader_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpSupplierwiseDatewise_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpSupplierWise_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpTax_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SpUnit_Result.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Tax.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Unit.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\userTable.cs">
+      <DependentUpon>BalajiProductManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormulationHeaderLineModel.cs" />
+    <Compile Include="Models\GRNHeaderLine.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PlantCompanyCombineData.cs" />
+    <Compile Include="Models\PlantViewModel.cs" />
+    <Compile Include="Models\ProductionHeaderLine.cs" />
+    <Compile Include="Models\PurchaseHeaderLineModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\styles.css" />
+    <Content Include="Content\css\util.css" />
+    <Content Include="Content\images\icons\favicon.ico" />
+    <Content Include="Content\images\img-01.png" />
+    <Content Include="Content\js\datatables-simple-demo.js" />
+    <Content Include="Content\js\scripts.js" />
+    <Content Include="Content\vendor\animate\animate.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\bootstrap\js\popper.js" />
+    <Content Include="Content\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Content\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Content\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Content\vendor\select2\select2.css" />
+    <Content Include="Content\vendor\select2\select2.js" />
+    <Content Include="Content\vendor\select2\select2.min.css" />
+    <Content Include="Content\vendor\select2\select2.min.js" />
+    <Content Include="Content\vendor\tilt\tilt.jquery.min.js" />
+    <Content Include="DataContext\BalajiProductManagement.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BalajiProductManagement.edmx</DependentUpon>
+      <LastGenOutput>BalajiProductManagement.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataContext\BalajiProductManagement.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BalajiProductManagement.edmx</DependentUpon>
+      <LastGenOutput>BalajiProductManagement.cs</LastGenOutput>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="ProjectScript\Companyvalidation.js" />
+    <Content Include="ProjectScript\GodownValidation.js" />
+    <Content Include="ProjectScript\ItemValidation.js" />
+    <Content Include="ProjectScript\PlantValidation.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="DataContext\BalajiProductManagement.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BalajiProductManagement.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataContext\BalajiProductManagement.edmx.diagram">
+      <DependentUpon>BalajiProductManagement.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\datatables-simple-demo.js" />
+    <Content Include="Scripts\js\scripts.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Company\CompanyView.cshtml" />
+    <Content Include="Views\Plant\PlantView.cshtml" />
+    <Content Include="Views\Company\CompanyPartial.cshtml" />
+    <Content Include="Views\Plant\PlantPartial.cshtml" />
+    <Content Include="Views\Company\CompanyReport.cshtml" />
+    <Content Include="Views\Plant\PlantReport.cshtml" />
+    <Content Include="Views\Godown\GodownPartial.cshtml" />
+    <Content Include="Views\Godown\GodownView.cshtml" />
+    <Content Include="Views\Godown\GodownReport.cshtml" />
+    <Content Include="Views\Unit\UnitView.cshtml" />
+    <Content Include="Views\Unit\UnitPartial.cshtml" />
+    <Content Include="Views\Unit\UnitReport.cshtml" />
+    <Content Include="Views\Tax\TaxPartial.cshtml" />
+    <Content Include="Views\Tax\TaxReport.cshtml" />
+    <Content Include="Views\Tax\TaxView.cshtml" />
+    <Content Include="Views\Purchase\PurchaseLinePartial.cshtml" />
+    <Content Include="Views\Product\ProductPartial.cshtml" />
+    <Content Include="Views\Product\ProductReport.cshtml" />
+    <Content Include="Views\Product\ProductView.cshtml" />
+    <Content Include="Views\Person\PersonPartial.cshtml" />
+    <Content Include="Views\Person\PersonView.cshtml" />
+    <Content Include="Views\Person\PersonReport.cshtml" />
+    <Content Include="Views\Item\ItemView.cshtml" />
+    <Content Include="Views\Item\ItemPartial.cshtml" />
+    <Content Include="Views\Item\ItemReport.cshtml" />
+    <Content Include="Views\Purchase\Index.cshtml" />
+    <Content Include="Views\Packing\PackingReport.cshtml" />
+    <Content Include="Views\Packing\PackingPartial.cshtml" />
+    <Content Include="Views\Packing\PackingView.cshtml" />
+    <Content Include="Views\Purchase\PurchaseHeaderPartial.cshtml" />
+    <Content Include="Views\GRN\GRNLinePartial.cshtml" />
+    <Content Include="Views\GRN\GRNHeaderPartial.cshtml" />
+    <Content Include="Views\GRN\Index.cshtml" />
+    <Content Include="Views\PurchaseReport\PurchaseReports.cshtml" />
+    <Content Include="Views\PurchaseReport\AllPurchase.cshtml" />
+    <Content Include="Views\Formulation\FormulationHeaderPartial.cshtml" />
+    <Content Include="Views\Formulation\FormulationLinePartial.cshtml" />
+    <Content Include="Views\Formulation\Index.cshtml" />
+    <Content Include="Views\Production\ProductionHeaderPartial.cshtml" />
+    <Content Include="Views\Production\ProductionLinePartial.cshtml" />
+    <Content Include="Views\Production\Index.cshtml" />
+    <Content Include="Views\Formulation\FormulationEnableDisable.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\FormulationReport\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="SaveImage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51421</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51421/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

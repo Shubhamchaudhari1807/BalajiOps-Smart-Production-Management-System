@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Balaji_ERP_Solution.DataContext.ProductionLine>
+@{
+    int i;
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function ProductionLineCalculation(str) {
+        var tr = $(str).closest("tr")
+        let AcceptedQty = parseFloat(tr.find(".classAcceptedQty").val())
+       
+    }
+    function GetStockData() {
+        console.log("Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+        let FormulationId = $("#idFormulationId").val();
+        $.getJSON('/Production/GetStockData', { FormulationId: FormulationId }, function (data) {
+            console.log("Hi")
+            $("#idItem").val(data.ItemName)
+            $("#idQuantity").val(data.FormulaQty)
+            GetProductionLine()
+        });
+    }
+    function GetProductionLine() {
+        let FormulationId = $("#idFormulationId").val();
+        $.ajax({
+            type: "POST",
+            url: "/Production/GetProductionLineData",
+            data: { FormulationId: FormulationId },
+            success: function (data) {
+                console.log(data);
+                console.log("why data not showing")
+                $("#Productionline").empty();
+
+                $(data).each(function (index, object) {
+                    var row = '<tr>' +
+                        '<tr>' +
+                        '<td>' +
+                        '<input type="text" value="' + object.ProductName + '" id="idProductName" class="classProductName"/>' +
+                        '<input type="hidden" name="item.ProductId" value="' + object.ProductId + '" />' +
+                        '</td>' +
+                        '<td>' +
+                        '<input type="text" value="' + object.ItemName + '" id="idItemName" class="classItemName"/>' +
+                        '<input type="hidden" name="item.ItemId" value="' + object.ItemId + '" />' +
+                        '</td>' +
+                        '<td>' +
+                        '<input type="text" value="' + object.ItemQty + '" id="idItemQty" class="classItemQty"/>' +
+                        '<input type="hidden" name="item.ItemQty" value="' + object.ItemQty + '" />' +
+                        '</td>' +
+                        '<td>' +
+                        '<input type="text" name="item.QuantityRequired" value="" id="idQuantityRequired" class="classQuantityRequired"/>' +
+                        '</td>' +
+                        '<td>' +
+                        '<input type="text" name="item.Stock" value="' + object.Stock + '" id="idStock" class="classStock"/>' +
+                        '<input type="hidden" name="item.GRNLineId" value="' + object.GRNLineId + '">' +
+                        '<input type="hidden" name="item.GRNHeaderId" value="' + object.GRNHeaderId + '">' +
+                        '</td>' +
+                        '</tr>';
+
+                   
+                    $("#Productionline").append(row);
+                });
+            }
+        });
+    }
+</script>
+<br />
+<div class="row">
+    <div class="table-responsive" style="overflow-x:scroll;overflow-y:auto;width:100%;max-height:350px">
+        <table class="table table-bordered">
+            <tr>
+                <th class="form-control-sm sm-2">Product Name</th>
+                <th class="form-control-sm sm-2">Item Name</th>
+                <th class="form-control-sm sm-2">Quantity</th>
+                <th class="form-control-sm sm-2">Quantity Required</th>
+                <th class="form-control-sm sm-2">Stock</th>
+               
+            </tr>
+            <tbody id="Productionline">
+            </tbody>
+        </table>
+
+    </div>
+    @foreach (var item in Model)
+    {
+        @Html.TextBoxFor(m => item.ProductId)
+        @Html.TextBoxFor(m => item.ItemId)
+        @Html.TextBoxFor(m => item.Quantity)
+        @Html.TextBoxFor(m => item.QuantityRequired)
+        @Html.TextBoxFor(m => item.Stock)
+    }
+</div>
+

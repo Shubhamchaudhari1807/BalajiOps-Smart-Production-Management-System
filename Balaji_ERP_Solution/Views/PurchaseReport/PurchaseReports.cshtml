@@ -1,0 +1,92 @@
+﻿@model Balaji_ERP_Solution.DataContext.PurchaseHeader
+<br />
+<label>Please Select Supplier</label>
+<div>
+    @Html.DropDownListFor(model => model.PersonId, new SelectList(ViewBag.SupplierList, "Value", "Text"), new { @class = "form-control", id = "idSupplierId"})
+</div>
+<br />
+<div class="row">
+    @*<div class="col-md-3">
+            <label>From Date<span style="color:red">*</span></label> we use TextBoxFor if we want to save data here we are not saving data so we use input type
+            @Html.TextBoxFor(model => model.PurchaseDate, new { @class = "form-control", type = "Date", id = "idfromDate" })
+            <span id="SpanPurchaseDate"></span>
+            @Html.ValidationMessageFor(model => model.PurchaseDate, "", new { @class = "text-danger" })
+        </div>*@
+
+    <div class="col-md-3">
+        <label>From Date</label>
+        <input type="date" class="form-control" id="idfromDate" />
+    </div>
+    <div class="col-md-3">
+        <label>To Date</label>
+        <input type="date" class="form-control" id="idToDate" />
+    </div>
+</div>
+<button type="submit" onclick="GetReport()">Show Report</button>
+<button>Excel</button>
+<script>
+    function GetReport() {
+        var supplierId = $("#idSupplierId").val();
+        var fromDate = $("#idfromDate").val();
+        var toDate = $("#idToDate").val();
+
+        // Check if both fromDate and toDate are provided
+        if (fromDate && toDate) {
+            $.ajax({
+                type: "POST",
+                url: "/PurchaseReport/SupplierwiseandDatewise",
+                data: { supplierId: supplierId, fromDate: fromDate, toDate: toDate },
+                success: function (data) {
+                    // Handle success response
+                    console.log(data);
+                    // Add data to the table
+                    $(data).each(function (index, object) {
+                        var row = '<tr>' +
+                            '<td>' + object.purchase_order_date + '</td>' +
+                            '<td>' + object.ProductName + '</td>' +
+                            '<td>' + object.ItemName + '</td>' +
+                            '</tr>';
+                        $("#PReport").append(row);
+                    });
+                }
+            });
+        } else {
+            // If fromDate or toDate is not provided, call GetSupplier
+            GetSupplier();
+        }
+    }
+
+    function GetSupplier() {
+        var supplierId = $("#idSupplierId").val();
+        $.ajax({
+            type: "POST",
+            url: "/PurchaseReport/Supplierwise",
+            data: { supplierId: supplierId },
+            success: function (data) {
+                $("#tableHeadings").show();
+                console.log(data);
+                $(data).each(function (index, object) {
+                    var row = '<tr>' +
+                        '<td>' + object.purchase_order_date + '</td>' +
+                        '<td>' + object.ProductName + '</td>' +
+                        '<td>' + object.ItemName + '</td>' +
+                        '</tr>';
+                    $("#PReport").append(row);
+                });
+            }
+        });
+    }
+
+</script>
+<table>
+    <thead id="tableHeadings" style="display: none;">
+        <tr>
+            <th>Date</th>
+            <th>Product Name</th>
+            <th>Item Name</th>
+        </tr>
+    </thead>
+    <tbody id="PReport">
+        <!-- Table content will be dynamically added here -->
+    </tbody>
+</table>

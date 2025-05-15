@@ -1,0 +1,95 @@
+﻿@model Balaji_ERP_Solution.DataContext.FormulationHeader
+<div class="form-horizontal">
+    <br />
+    <h4 class="text-center bg-success">Formulation Header</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <label>Formulation Date<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.FormulationDate, new { @class = "form-control", type = "Date", id = "idFormulationDate" })
+            @Html.ValidationMessageFor(model => model.FormulationDate, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Product Name</label>
+            @Html.DropDownListFor(model => model.ProductId, new SelectList(ViewBag.ProductName, "Value", "Text"), new { @class = "form-control classHeaderProduct", id = "idProductId", onchange = "LoadFormulationItem()" })
+            @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Item Name<span style="color:red">*</span></label>
+            @*<select id="ddlItem" class="form-control classHeaderItem" OnChange="GetGeneratedCode(),GetItemId()"></select>*@
+            <select id="ddlItem" class="form-control classHeaderItem" onchange="GetGeneratedCode(); GetItem();"></select>
+
+            @Html.HiddenFor(model => model.ItemId, new { @id = "PId", @class = "classItemId" })
+            @Html.ValidationMessageFor(model => model.ItemId, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Formulation Name</label>
+            @Html.TextBoxFor(model => model.FormulationName, new { @class = "form-control", id = "idFormulationName" })
+            @Html.ValidationMessageFor(model => model.FormulationName, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Formulation Code</label>
+            @Html.TextBoxFor(model => model.FormulationCode, new { @class = "form-control", id = "idFormulationCode"})
+            @Html.ValidationMessageFor(model => model.FormulationCode, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Formula Qty</label>
+            @Html.TextBoxFor(model => model.FormulaQty, new { @class = "form-control classFormulationHeaderQty", id = "idFormulaQty", onclick = "ToCheckQuantity()",onkeyUp= "ToCheckQuantity()" })
+            @Html.ValidationMessageFor(model => model.FormulaQty, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Formula Input</label>
+            <input type="text" class="form-control classFormulaInput" id="idFormulaInput" readonly="readonly"/>
+        </div>
+    </div>
+    </div>
+        <script>
+            //function AutoGenerateCode() {
+            //    $.getJSON('/Formulation/GenerateCode',
+            //        function (data) {
+            //            $("#idFormulationCode").val(data)
+            //        })
+            //}//we can use this code but we use property bind from index method that is =>formulationHeader.FormulationCode = GenerateCode();
+
+            function LoadFormulationItem() {
+                console.log("Hi")
+                var productId = $("#idProductId").val()
+                $.ajax({
+                    type: "POST",
+                    url: "/Formulation/GetItem",
+                    data: { productId: productId },
+                    success: function (data) {
+                        console.log(data)
+                        var classddlItem = $('#ddlItem')
+                        classddlItem.empty()
+                        $.each(data, function (index, data) {
+                            classddlItem.append($('<option/>', {
+                                value: data.Value,
+                                text: data.Text,
+                            }));
+                            console.log(data.Value + data.Text)
+                        });
+                    },
+                    error: function (ex) {
+                        alert("Error loading items: " + ex);
+                    }
+                });
+            }
+            function GetItem() {
+                console.log("Hyyyyyyyyyyyyyyyyyyyyyyyyyy")
+                let itemId = $("#ddlItem").val();
+                $("#PId").val(itemId)
+            }
+            function GetGeneratedCode() {
+                console.log("Hi")
+                let ItemId = $("#ddlItem").val();
+                $.getJSON('/Formulation/GenerateCode', { ItemId, ItemId },
+                    function (data) {
+                        console.log(data)
+                        var percentage = data.code;
+                        console.log(percentage)
+                        $("#idFormulationCode").val(percentage);
+                        console.log("Hello")
+                    })
+            }
+        </script>

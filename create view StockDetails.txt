@@ -1,0 +1,16 @@
+create view StockDetails
+as begin 
+select GHeader.GRNHeaderId,GHeader.PurchaseHeaderId,GRNDate,VehicleNo,VehicleWeight,VehicleLoadedWeight,DCNo,GLine.GRNLineId,GLine.ProductId
+GLine.ItemId,GLine.UnitId,GLine.POQty,AcceptedQty,RejectedQty,FreeQty,PORate,GLine.DiscountPercentage,GLine.TaxId,GLine.PurchaseLineId,
+PLine.PackingId,PHeader.PurchaseDate,PHeader.PersonId,person.PersonName,person.PersonAddress,person.PersonContact,person.PersonEmail,person.PersonTypeId
+tax.TaxName,tax.TaxPercentage,P.ProductName,P.Flammable,I.ItemName,I.Max_Qty,I.Min_Qty,U.UnitName
+from GRNHeader GHeader
+inner join GRNLine GLine on GHeader.GRNHeaderId=GLine.GRNHeaderId
+inner join PurchaseLine PLine on GLine.PurchaseLineId=PLine.PurchaseLineId
+inner join PurchaseHeader PHeader on PLine.PurchaseHeaderId=PHeader.PurchaseHeaderId
+inner join Tax tax on GLine.TaxId=tax.TaxId
+inner join Product P on GLine.ProductId=P.ProductId
+inner join Item I on GLine.ItemId=I.ItemId
+inner join Person person on PHeader.PersonId=person.PersonId
+inner join Unit U on GLine.UnitId=U.UnitId
+end

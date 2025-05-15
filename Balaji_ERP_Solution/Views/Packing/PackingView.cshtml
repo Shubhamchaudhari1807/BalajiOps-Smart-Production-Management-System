@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "PackingView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("SaveOrUpdate", "Packing", FormMethod.Post))
+{
+    @Html.Partial("~/Views/Packing/PackingPartial.cshtml")
+    @*<button type="submit" class="btn btn bg-danger">Save Record</button>*@
+}
+@Html.Action("PackingReport")

@@ -1,0 +1,2 @@
+D:\.NET Projects\Balaji_ERP_Solution\1_DataContext\obj\Debug\1_DataContext.csproj.AssemblyReference.cache
+D:\.NET Projects\Balaji_ERP_Solution\1_DataContext\obj\Debug\1_DataContext.csproj.CoreCompileInputs.cache

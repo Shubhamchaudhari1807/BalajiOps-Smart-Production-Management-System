@@ -1,0 +1,84 @@
+﻿@model Balaji_ERP_Solution.DataContext.GRNHeader
+
+
+<div class="form-horizontal">
+    <br />
+    <h4 class="text-center bg-success">GRN Header</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <label>PO No<span style="color:red">*</span></label>
+            @Html.DropDownListFor(model => model.PurchaseHeaderId, new SelectList(ViewBag.PONo, "Value", "Text"), new { @class = "form-control", id = "idPOId", onchange = "GetHeaderData()" })
+            @Html.HiddenFor(model => model.GRNHeaderId)
+            @Html.ValidationMessageFor(model => model.PurchaseHeaderId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            <label>GRN Date<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.GRNDate, new { @class = "form-control", type = "Date", id = "idPurchaseDate" })
+            @Html.ValidationMessageFor(model => model.GRNDate, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Supplier Name</label>
+            <input type="text" class="form-control" id="SupplierName" readonly="readonly" />
+        </div>
+
+        <div class="col-md-3">
+            <label>Supplier Contact</label>
+            <input type="text" class="form-control" id="SupplierId" readonly="readonly" />
+        </div>
+
+        <div class="col-md-3">
+            <label>Vehicle No<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.VehicleNo, new { @class = "form-control ", id = "idVehicleNo" })
+            <span id="SpanVehicleNo"></span>
+            @Html.ValidationMessageFor(model => model.VehicleNo, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>PO Date</label>
+            <input type="datetime" class="form-control" id="idPODate" readonly="readonly" />
+        </div>
+        <div class="col-md-3">
+            <label>Vehicle Weight<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.VehicleWeight, new { @class = "form-control ", id = "idVehicleWeight" })
+            @Html.ValidationMessageFor(model => model.VehicleWeight, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>Vehicle Loaded Weight<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.VehicleLoadedWeight, new { @class = "form-control ", id = "idVehicle Loaded Weight" })
+            @Html.ValidationMessageFor(model => model.VehicleLoadedWeight, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <label>DC No<span style="color:red">*</span></label>
+            @Html.TextBoxFor(model => model.DCNo, new { @class = "form-control", id = "idDCNo" })
+            @Html.ValidationMessageFor(model => model.DCNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<script>
+    function GetHeaderData() {
+        console.log("Hi");
+        let POId = $("#idPOId").val();
+        $.getJSON('/GRN/GetGRNHeaderData', { POId: POId }, function (data) {
+            console.log("Hi")
+            $("#SupplierId").val(data.PersonContact)
+            $("#SupplierName").val(data.PersonName)
+            $("#idPODate").val(data.podate)
+            GetGRNLine()
+        });
+    }
+   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

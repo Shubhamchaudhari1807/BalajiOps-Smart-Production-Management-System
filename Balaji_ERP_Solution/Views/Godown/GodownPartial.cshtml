@@ -1,0 +1,87 @@
+﻿ @model Balaji_ERP_Solution.DataContext.Godown
+
+
+@using (Html.BeginForm("SaveOrUpdate", "Godown", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <script src="~/ProjectScript/GodownValidation.js"></script>
+    <div class="form-horizontal">
+        <h4>Godown Master</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                <label>Comapny Name<span style="color:red">*</span></label>
+                @Html.DropDownListFor(model => model.CompanyId, new SelectList(ViewBag.CompanyList, "Value", "Text"), new { @class = "form-control", id = "CompanyId", OnChange = "LoadPlant()", onkeyup = "validateAndSubmitForm()" })
+                @Html.HiddenFor(model => model.GodownId)
+                <span id="ComapnyNameSpan"></span>
+                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                <label>Plant<span style="color:red">*</span></label>
+                <select id="ddlPlant" class="form-control" OnChange="GetPlantId()",onkeyup = "validateAndSubmitForm()">
+                </select>
+                <span id="PlantSpan"></span>
+                @Html.HiddenFor(model => model.PlantId, new { id = "PId", })
+                @*<select id="ddlPlant" class="form-control" OnChange="GetPlantId()"></select>*@
+                @*@Html.HiddenFor(model => model.PlantId, new { id = "PId" })*@
+                @*@Html.TextBoxFor(model => model.PlantId, new { @class = "form-control",id="ddlPlant"})*@
+                @Html.ValidationMessageFor(model => model.PlantId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Godown Name<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.GodownName, new { @class = "form-control", id = "idGodownName",onkeyup = "validateAndSubmitForm()"})
+                <span id="GodownSpan"></span>
+                @Html.ValidationMessageFor(model => model.GodownName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <label>Address<span style="color:red">*</span></label>
+                @Html.TextBoxFor(model => model.GodownAddress, new { @class = "form-control", id = "idGodownAddress" })
+                <span id="AddressSpan"></span>
+
+                @Html.ValidationMessageFor(model => model.GodownAddress, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-offset-2 col-md-3">
+                <br />
+                <input type="submit" value="Save Record" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+<script>
+    function LoadPlant() {
+        var companyId = $("#CompanyId").val()
+        console.log(companyId)
+        $.ajax({
+            type: "POST",
+            url: "/Godown/GetPlant",
+            data: { companyId: companyId },
+            success: function (data) {
+                console.log(data)
+                var ddlPlant = $("#ddlPlant");
+                ddlPlant.empty();
+                $.each(data, function (index, data) {
+                    ddlPlant.append($('<option/>', {
+                        value: data.Value,
+                        text: data.Text,
+                    }));
+                    console.log(data.Value + data.Text)
+                });
+            }
+            ,
+            error: function (ex) {
+                alert("Error loading plants: " + ex);
+            }
+        });
+    }
+
+    function GetPlantId() {
+        let plantid = $("#ddlPlant").val()
+        $("#PId").val(plantid)
+
+    }
+
+</script>
